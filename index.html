@@ -431,6 +431,32 @@ h1.hello::before{content:'EXPLORE YOUR FUTURE';display:block;font-family:var(--f
 .cc-gallery .cc-credit{display:block;font-size:11px;line-height:1.5;margin-top:7px;color:var(--muted)}
 .cc-gallery a{color:var(--zobo);text-decoration:underline;text-underline-offset:3px}
 </style>
+<style>
+.sf-wrap{padding:18px 16px 30px}.sf-muted{font-size:12px;line-height:1.6;color:var(--muted);margin:10px 0}.sf-field{width:100%;min-width:0;padding:11px;border:1px solid var(--line, #bbb);border-radius:10px;background:var(--panel,#fff);color:inherit;font:inherit}.sf-filters{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}.sf-filters select:last-child{grid-column:1/-1}.sf-card{border:1px solid var(--line,#aaa);border-radius:13px;padding:14px;margin:12px 0;background:var(--panel,#fff)}.sf-card h3{font-size:16px;margin:0 0 7px}.sf-card p{font-size:12px;line-height:1.55;margin:7px 0}.sf-tags{font-size:11px;color:var(--muted)}.sf-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.sf-actions a,.sf-actions button{font:inherit;font-size:12px;padding:9px 12px;border-radius:9px;border:1px solid var(--line,#aaa);background:transparent;color:inherit;text-decoration:none;cursor:pointer}.sf-actions a{background:var(--zobo,#6c2949);color:white;border:0}.tabs{overflow-x:auto;scrollbar-width:thin}.tab{flex-shrink:0}
+</style>
+<style>
+.tool-menu{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.tool-menu button,.tool-btn{border:1px solid var(--line,#999);border-radius:10px;padding:11px 8px;background:var(--panel,#fff);color:inherit;font:inherit;font-size:12px;cursor:pointer}
+.tool-menu button.active,.tool-btn.primary{background:var(--zobo,#6c2949);color:white}
+.tool-panel{border:1px solid var(--line,#aaa);border-radius:12px;padding:14px;margin-top:12px}
+.tool-panel h2{font-size:17px;margin:0 0 8px}.tool-panel p,.tool-panel li{font-size:12px;line-height:1.65}
+.tool-panel label{display:block;font-size:12px;margin:11px 0 4px}
+.tool-panel input,.tool-panel select,.tool-panel textarea{display:block;width:100%;padding:10px;border:1px solid var(--line,#aaa);border-radius:9px;background:var(--panel,#fff);color:inherit;font:inherit}
+.tool-panel button{margin-top:9px}.tool-result{padding:11px;background:var(--hover,rgba(100,100,100,.1));border-radius:10px;margin-top:12px;font-size:12px;line-height:1.7}
+.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tool-note{color:var(--muted);font-size:11px!important}
+</style><style>
+/* Match the existing Campus Compass theme in all new sections. */
+.sf-wrap,.tool-panel,.sf-card{color:var(--ink)}
+.sf-field,.sf-card,.tool-menu button,.tool-btn,.tool-panel,.tool-panel input,.tool-panel select,.tool-panel textarea{
+ background:var(--paper);color:var(--ink);border-color:var(--rule);color-scheme:normal;
+}
+.tool-panel input::placeholder,.tool-panel textarea::placeholder,.sf-field::placeholder{color:var(--muted)}
+.tool-menu button.active,.tool-btn.primary{background:var(--zobo);color:#fff;border-color:var(--zobo)}
+.tool-panel input[type=checkbox]{width:auto;accent-color:var(--zobo)}
+.tool-result{background:var(--hover);color:var(--ink)}
+.sf-actions button{color:var(--ink);border-color:var(--rule)}
+.sf-actions a{color:#fff}
+</style>
 </head><body>
 
 <div class="app" id="app" data-screen="map">
@@ -477,6 +503,8 @@ h1.hello::before{content:'EXPLORE YOUR FUTURE';display:block;font-family:var(--f
       <button class="tab" role="tab" data-go="shortlist" aria-selected="false">
         <svg width="20" height="20" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg>Shortlist <span class="n" id="slCount">0</span>
       </button>
+      <button class="tab" role="tab" data-go="scholarships" aria-selected="false">🎓 Scholarships</button>
+      <button class="tab" role="tab" data-go="tools" aria-selected="false">🧰 Student Tools</button>
       <span class="tab-ind" id="tabInd" aria-hidden="true"></span>
     </nav>
 
@@ -523,6 +551,33 @@ h1.hello::before{content:'EXPLORE YOUR FUTURE';display:block;font-family:var(--f
         </form>
       </section>
 
+      <section class="pane" id="pane-scholarships" aria-label="Scholarship Finder">
+        <div class="sf-wrap">
+          <h1 class="hello">Scholarship Finder 🎓</h1>
+          <p class="sf-muted">Discover Nigerian and international funding programmes. Check official websites for current openings and deadlines.</p>
+          <input id="sfSearch" class="sf-field" type="search" placeholder="Search sponsor, programme or country…" aria-label="Search scholarships">
+          <div class="sf-filters">
+            <select id="sfRegion" class="sf-field" aria-label="Scholarship region"><option value="all">All regions</option><option value="Nigeria">Nigeria</option><option value="International">International</option></select>
+            <select id="sfLevel" class="sf-field" aria-label="Study level"><option value="all">All study levels</option><option value="Undergraduate">Undergraduate</option><option value="Postgraduate">Postgraduate</option></select>
+            <select id="sfSavedOnly" class="sf-field" aria-label="Saved scholarships"><option value="all">All programmes</option><option value="saved">Saved only</option></select>
+          </div>
+          <p id="sfCount" class="sf-muted" aria-live="polite"></p>
+          <div id="sfResults"></div>
+          <p class="sf-muted">These are established scholarship programme portals, not confirmed open applications. Eligibility, funding and deadlines change. Never pay an unofficial agent to apply.</p>
+        </div>
+      </section>
+<section class="pane" id="pane-tools" aria-label="Student tools">
+<div class="sf-wrap">
+<h1 class="hello">Student Tools 🧰</h1>
+<p class="sf-muted">Plan your university journey. Saved details stay in this browser unless you export them.</p>
+<div class="tool-menu">
+<button data-tool="compare">⚖️ Compare universities</button><button data-tool="admission">📋 Admission checklist</button>
+<button data-tool="tour">🏫 Campus tours</button><button data-tool="cost">💰 Cost calculator</button>
+<button data-tool="reviews">⭐ Student reviews</button><button data-tool="deadlines">📅 Admission deadlines</button>
+<button data-tool="career">🧭 Career quiz</button><button data-tool="profile">👤 Student profile</button>
+</div>
+<div id="toolContent" aria-live="polite"></div>
+</div></section>
       <section class="pane" id="pane-shortlist" aria-label="Shortlist">
         <div id="slBody"></div>
       </section>
@@ -1311,6 +1366,83 @@ function renderShortlist(){
   $('slMap').onclick=function(){ st.highlight=new Set(shortlist); if(map){schoolLayer.changed(); fitSchools(items,true);} if(narrow.matches) go('map'); };
 }
 
+
+/* Scholarship Finder: programme directory; no unverified opening claims */
+var sfProgrammes=[
+ {id:'nelfund',name:'NELFUND Student Loan',region:'Nigeria',level:'Undergraduate',sponsor:'Nigerian Education Loan Fund',desc:'Student financing programme, not a scholarship. Check eligibility and repayment terms.',url:'https://nelf.gov.ng/'},
+ {id:'mtf',name:'MTN Foundation Scholarships',region:'Nigeria',level:'Undergraduate',sponsor:'MTN Foundation Nigeria',desc:'Scholarship initiatives for eligible Nigerian students; categories and requirements vary.',url:'https://www.mtn.ng/foundation/'},
+ {id:'seplat',name:'Seplat Energy Scholarship Programmes',region:'Nigeria',level:'Undergraduate',sponsor:'Seplat Energy',desc:'Educational scholarship programmes; check current calls and eligible institutions.',url:'https://www.seplatenergy.com/'},
+ {id:'nnpc',name:'NNPC Scholarship Information',region:'Nigeria',level:'Undergraduate',sponsor:'NNPC Limited',desc:'Look for verified scholarship announcements from NNPC and its partners.',url:'https://www.nnpcgroup.com/'},
+ {id:'chevening',name:'Chevening Scholarships',region:'International',level:'Postgraduate',sponsor:'UK Government',desc:'UK postgraduate scholarship programme; country eligibility and dates apply.',url:'https://www.chevening.org/scholarships/'},
+ {id:'commonwealth',name:'Commonwealth Scholarships',region:'International',level:'Postgraduate',sponsor:'Commonwealth Scholarship Commission',desc:'Various postgraduate routes for eligible Commonwealth applicants.',url:'https://cscuk.fcdo.gov.uk/scholarships/'},
+ {id:'erasmus',name:'Erasmus Mundus Joint Masters',region:'International',level:'Postgraduate',sponsor:'European Union',desc:'International joint masters programmes, some offering scholarships.',url:'https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters'},
+ {id:'daad',name:'DAAD Scholarship Database',region:'International',level:'Postgraduate',sponsor:'German Academic Exchange Service',desc:'Search German study and research funding programmes and individual eligibility rules.',url:'https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarship-database/'},
+ {id:'mastercard',name:'Mastercard Foundation Scholars Program',region:'International',level:'Undergraduate',sponsor:'Mastercard Foundation',desc:'Scholarship opportunities through participating universities; degree levels differ by partner.',url:'https://mastercardfdn.org/all/scholars/'},
+ {id:'fulbright',name:'Fulbright Foreign Student Program',region:'International',level:'Postgraduate',sponsor:'Fulbright Program',desc:'Graduate study opportunities with country-specific application processes.',url:'https://foreign.fulbrightonline.org/'}
+];
+var sfSaved=[];
+try{sfSaved=JSON.parse(localStorage.getItem('cc_scholarships_saved')||'[]');if(!Array.isArray(sfSaved))sfSaved=[];}catch(e){sfSaved=[];}
+function sfRender(){
+ var q=($('sfSearch').value||'').toLowerCase().trim(),r=$('sfRegion').value,l=$('sfLevel').value,sv=$('sfSavedOnly').value;
+ var matches=sfProgrammes.filter(function(p){return (r==='all'||p.region===r)&&(l==='all'||p.level===l)&&(sv==='all'||sfSaved.indexOf(p.id)>=0)&&(!q||(p.name+' '+p.sponsor+' '+p.desc+' '+p.region).toLowerCase().indexOf(q)>=0);});
+ $('sfCount').textContent=matches.length+' programme'+(matches.length===1?'':'s')+' found';
+ $('sfResults').innerHTML=matches.map(function(p){
+ return '<article class="sf-card"><h3>'+esc(p.name)+'</h3><div class="sf-tags">'+esc(p.region)+' · '+esc(p.level)+' · '+esc(p.sponsor)+'</div><p>'+esc(p.desc)+'</p><p><strong>Application status:</strong> Not verified — check official portal</p><div class="sf-actions"><a href="'+p.url+'" target="_blank" rel="noopener noreferrer">Official website ↗</a><button type="button" data-sfsave="'+p.id+'" aria-pressed="'+(sfSaved.indexOf(p.id)>=0)+'">'+(sfSaved.indexOf(p.id)>=0?'★ Saved':'☆ Save')+'</button></div></article>';
+ }).join('')||'<p class="sf-muted">No matching programmes. Try another filter.</p>';
+}
+['sfSearch','sfRegion','sfLevel','sfSavedOnly'].forEach(function(id){$(id).addEventListener('input',sfRender);});
+$('sfResults').addEventListener('click',function(e){
+ var b=e.target.closest('[data-sfsave]');if(!b)return;
+ var id=b.getAttribute('data-sfsave'),i=sfSaved.indexOf(id);if(i<0)sfSaved.push(id);else sfSaved.splice(i,1);
+ try{localStorage.setItem('cc_scholarships_saved',JSON.stringify(sfSaved));}catch(err){}
+ sfRender();
+});
+sfRender();
+
+
+/* Student Tools: local-first tools; no unsupported eligibility or review claims */
+var toolStore={};
+try{toolStore=JSON.parse(localStorage.getItem('cc_student_tools')||'{}')||{};}catch(e){}
+function toolSave(){try{localStorage.setItem('cc_student_tools',JSON.stringify(toolStore));}catch(e){}}
+function toolValue(id){return ($(id)&&$(id).value)||'';}
+function toolMoney(n){return '₦'+Math.round(n||0).toLocaleString('en-NG');}
+function toolSchoolOptions(){return SCHOOLS.map(function(s){return '<option value="'+esc(s.id)+'">'+esc(s.name)+'</option>';}).join('');}
+function toolPanel(html){$('toolContent').innerHTML='<div class="tool-panel">'+html+'</div>';}
+function toolShow(kind){
+ document.querySelectorAll('[data-tool]').forEach(function(b){b.classList.toggle('active',b.dataset.tool===kind);});
+ if(kind==='compare'){
+  toolPanel('<h2>Compare universities</h2><p>Select up to three universities. Details shown are from the Campus Compass directory, not verified tuition or admission figures.</p>'+[1,2,3].map(function(n){return '<label>University '+n+'</label><select id="tc'+n+'"><option value="">Choose university</option>'+toolSchoolOptions()+'</select>';}).join('')+'<button class="tool-btn primary" id="tcGo">Compare</button><div id="tcOut"></div>');
+  $('tcGo').onclick=function(){var ids=[1,2,3].map(function(n){return toolValue('tc'+n);}).filter(Boolean);var chosen=ids.filter(function(x,i){return ids.indexOf(x)===i;}).map(function(id){return byId[id];}).filter(Boolean);$('tcOut').innerHTML=chosen.length?chosen.map(function(p){return '<div class="tool-result"><strong>'+esc(p.name)+'</strong><p>'+esc(p.city+', '+p.state)+' · '+(p.type==='fed'?'Federal':p.type==='state'?'State':'Private')+' · Founded '+p.year+'</p><p>Directory subject categories: '+esc(p.areas.join(', '))+'</p></div>';}).join(''):'<p>Select at least one university.</p>';};
+ }else if(kind==='admission'){
+  toolPanel('<h2>Admission preparation checklist</h2><p>Track your preparation. This is not an admission eligibility verdict: JAMB, O’level, subject combinations and cut-offs must be checked with each institution.</p>'+['Confirm the university offers my course','Check current JAMB subject combination','Check required O’level subjects and grades','Check current screening / Post-UTME notice','Confirm official fees and deadlines','Prepare required documents'].map(function(t,i){return '<label><input type="checkbox" class="tcheck" data-i="'+i+'" style="display:inline;width:auto;margin-right:8px" '+((toolStore.checks||[]).indexOf(i)>=0?'checked':'')+'>'+t+'</label>';}).join('')+'<p class="tool-note">Progress is stored on this device.</p>');
+  document.querySelectorAll('.tcheck').forEach(function(c){c.onchange=function(){toolStore.checks=Array.from(document.querySelectorAll('.tcheck:checked')).map(function(x){return +x.dataset.i;});toolSave();};});
+ }else if(kind==='tour'){
+  toolPanel('<h2>Virtual campus tours</h2><p>Choose a university and open its existing photo gallery on the map. Photos are sourced online and may not all be verified; 360° tours are not yet available.</p><label>University</label><select id="ttSchool">'+toolSchoolOptions()+'</select><button class="tool-btn primary" id="ttGo">Open campus photos</button>');
+  $('ttGo').onclick=function(){var id=toolValue('ttSchool');if(byId[id]){st.selected=id;go('map');renderCard();}};
+ }else if(kind==='cost'){
+  var fields=[['tuition','Tuition / school fees'],['housing','Accommodation'],['food','Food'],['transport','Transportation'],['books','Books and supplies'],['other','Other expenses']];
+  toolPanel('<h2>University cost calculator</h2><p>Enter your own estimates in naira for one academic year.</p>'+fields.map(function(f){return '<label>'+f[1]+' (₦)</label><input type="number" min="0" step="100" id="cost_'+f[0]+'" value="'+(toolStore['cost_'+f[0]]||0)+'">';}).join('')+'<button class="tool-btn primary" id="costGo">Calculate total</button><div id="costOut"></div>');
+  $('costGo').onclick=function(){var sum=0;fields.forEach(function(f){var v=Math.max(0,Number(toolValue('cost_'+f[0]))||0);toolStore['cost_'+f[0]]=v;sum+=v;});toolSave();$('costOut').innerHTML='<div class="tool-result"><strong>Estimated yearly total: '+toolMoney(sum)+'</strong><p>This is your personal budget estimate, not a university fee quote.</p></div>';};
+ }else if(kind==='reviews'){
+  var revs=toolStore.reviews||[];
+  toolPanel('<h2>Student reviews — personal notes</h2><p>Write notes about a campus visit or information you personally checked. Notes are private to this browser, not public verified student reviews.</p><label>University</label><select id="rvSchool">'+toolSchoolOptions()+'</select><label>Your notes</label><textarea id="rvText" rows="3" maxlength="600" placeholder="What did you learn?"></textarea><button class="tool-btn primary" id="rvAdd">Save private note</button><div id="rvOut">'+revs.map(function(r){return '<div class="tool-result"><strong>'+esc(r.school)+'</strong><p>'+esc(r.text)+'</p></div>';}).join('')+'</div>');
+  $('rvAdd').onclick=function(){var t=toolValue('rvText').trim(),p=byId[toolValue('rvSchool')];if(!t||!p)return;revs.unshift({school:p.name,text:t});toolStore.reviews=revs.slice(0,30);toolSave();toolShow('reviews');};
+ }else if(kind==='deadlines'){
+  var dates=toolStore.deadlines||[];
+  toolPanel('<h2>Admission deadline tracker</h2><p>Add dates from official school announcements. No live deadline feed is connected yet.</p><label>School / application</label><input id="dlName" maxlength="100" placeholder="e.g. University screening"><label>Deadline</label><input type="date" id="dlDate"><button class="tool-btn primary" id="dlAdd">Add deadline</button><div id="dlOut">'+dates.slice().sort(function(a,b){return a.date.localeCompare(b.date);}).map(function(d){return '<div class="tool-result"><strong>'+esc(d.name)+'</strong> — '+esc(d.date)+'</div>';}).join('')+'</div>');
+  $('dlAdd').onclick=function(){var n=toolValue('dlName').trim(),d=toolValue('dlDate');if(!n||!d)return;dates.push({name:n,date:d});toolStore.deadlines=dates.slice(-40);toolSave();toolShow('deadlines');};
+ }else if(kind==='career'){
+  toolPanel('<h2>Career discovery quiz</h2><p>Choose the subject area you enjoy most. Suggestions are for exploration, not a career aptitude test.</p><label>What interests you most?</label><select id="cqInterest"><option value="tech">Technology and problem-solving</option><option value="health">Health and helping people</option><option value="business">Business and numbers</option><option value="creative">Writing, design and creativity</option><option value="nature">Nature and the environment</option><option value="society">Law, policy and society</option></select><button class="tool-btn primary" id="cqGo">Explore courses</button><div id="cqOut"></div>');
+  $('cqGo').onclick=function(){var choices={tech:'Computer Science, Software Engineering, Mathematics',health:'Medicine, Nursing, Public Health',business:'Accounting, Economics, Business Administration',creative:'Mass Communication, Fine Arts, English',nature:'Agriculture, Environmental Science, Biology',society:'Law, Political Science, Sociology'};$('cqOut').innerHTML='<div class="tool-result"><strong>Courses to explore</strong><p>'+choices[toolValue('cqInterest')]+'</p><p>Check each university’s current course list and entry requirements.</p></div>';};
+ }else if(kind==='profile'){
+  toolPanel('<h2>My student profile</h2><p>Save a simple planning profile on this device. No online account or cross-device login has been created.</p><label>Preferred course</label><input id="prCourse" maxlength="100" value="'+esc(toolStore.course||'')+'"><label>Preferred state / location</label><input id="prState" maxlength="100" value="'+esc(toolStore.location||'')+'"><label>My goal</label><textarea id="prGoal" maxlength="400" rows="3">'+esc(toolStore.goal||'')+'</textarea><button class="tool-btn primary" id="prSave">Save profile</button><button class="tool-btn" id="prExport">Export my planning data</button><div id="prOut"></div>');
+  $('prSave').onclick=function(){toolStore.course=toolValue('prCourse');toolStore.location=toolValue('prState');toolStore.goal=toolValue('prGoal');toolSave();$('prOut').textContent='Saved on this device.';};
+  $('prExport').onclick=function(){var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(toolStore,null,2)],{type:'application/json'}));a.download='campus-compass-my-plans.json';a.click();setTimeout(function(){URL.revokeObjectURL(a.href);},1000);};
+ }
+}
+document.querySelectorAll('[data-tool]').forEach(function(b){b.addEventListener('click',function(){toolShow(b.dataset.tool);});});
+toolShow('compare');
+
 /* ---------- navigation ---------- */
 function go(v){
   if(v==='map'){ st.screen='map'; }
@@ -1327,7 +1459,7 @@ function placeInd(){
 function paintNav(){
   $('app').dataset.screen=st.screen;
   $('app').dataset.activeTab=st.tab;
-  ['explore','advisor','shortlist'].forEach(function(t){ $('pane-'+t).classList.toggle('on',st.tab===t); });
+  ['explore','advisor','shortlist','scholarships','tools'].forEach(function(t){ $('pane-'+t).classList.toggle('on',st.tab===t); });
   document.querySelectorAll('.tab').forEach(function(b){
     var g=b.dataset.go, sel;
     if(narrow.matches) sel=(g==='map')?st.screen==='map':(st.screen==='panel'&&st.tab===g);
