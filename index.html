@@ -419,6 +419,17 @@ h1.hello::before{content:'EXPLORE YOUR FUTURE';display:block;font-family:var(--f
  .app[data-active-tab="advisor"] .quick button{font-size:11px!important}
  .app[data-active-tab="advisor"] .composer textarea{min-height:40px!important}
 }
+
+/* Verified campus photo gallery */
+.cc-gallery{border:1px solid var(--rule);border-radius:15px;padding:13px;margin-top:4px;background:var(--paper)}
+.cc-gallery h3{font-size:14px;margin:0 0 7px}.cc-gallery p{font-size:12px;color:var(--muted);margin:0 0 9px;line-height:1.5}
+.cc-gallery .cc-photo{width:100%;max-height:245px;object-fit:cover;border-radius:10px;background:var(--hover)}
+.cc-gallery .cc-thumbs{display:flex;gap:7px;overflow-x:auto;margin-top:9px;padding-bottom:3px}
+.cc-gallery .cc-thumbs button{flex:0 0 74px;border:2px solid transparent;border-radius:8px;padding:0;overflow:hidden;background:var(--hover)}
+.cc-gallery .cc-thumbs button[aria-pressed=true]{border-color:var(--zobo)}
+.cc-gallery .cc-thumbs img{display:block;width:70px;height:54px;object-fit:cover}
+.cc-gallery .cc-credit{display:block;font-size:11px;line-height:1.5;margin-top:7px;color:var(--muted)}
+.cc-gallery a{color:var(--zobo);text-decoration:underline;text-underline-offset:3px}
 </style>
 </head><body>
 
@@ -608,6 +619,216 @@ S('usp','USP','University of São Paulo','São Paulo','Brazil','SA','state',1934
 S('unam','UNAM','National Autonomous University of Mexico','Mexico City','Mexico','NA','state',1910,19.332,-99.187,'eng med law bus sci art');
 S('uba','UBA','University of Buenos Aires','Buenos Aires','Argentina','SA','state',1821,-34.5997,-58.373,'eng med law bus sci agr art');
 S('uchile','UChile','University of Chile','Santiago','Chile','SA','state',1842,-33.444,-70.651,'eng med law bus sci agr art');
+/* Expanded Nigerian universities. New entries with year 0, state-centre coordinates, or empty course areas require verification. */
+S('uniosun','UNIOSUN','Osun State University','Osogbo','Osun','SW','state',2006,7.7610,4.6020,'med law bus sci agr art eng');
+S('eksu','EKSU','Ekiti State University','Ado-Ekiti','Ekiti','SW','state',1982,7.7140,5.2500,'med law bus sci agr art eng');
+S('fuoye','FUOYE','Federal University Oye-Ekiti','Oye-Ekiti','Ekiti','SW','fed',2011,7.8000,5.3300,'eng sci agr bus art law');
+S('kwasu','KWASU','Kwara State University','Malete','Kwara','NC','state',2009,8.7100,4.4600,'eng sci agr bus art');
+S('tasued','TASUED','Tai Solarin University of Education','Ijagun','Ogun','SW','state',2005,6.9300,3.9200,'sci bus art');
+S('imsu','IMSU','Imo State University','Owerri','Imo','SE','state',1981,5.4920,7.0300,'med law bus sci agr art eng');
+S('esut','ESUT','Enugu State University of Science and Technology','Enugu','Enugu','SE','state',1980,6.4600,7.5200,'eng med law bus sci agr art');
+S('absu','ABSU','Abia State University','Uturu','Abia','SE','state',1981,5.8200,7.4000,'med law bus sci agr art eng');
+S('nsuk','NSUK','Nasarawa State University','Keffi','Nasarawa','NC','state',2001,8.8500,7.8700,'law bus sci agr art');
+S('bsu','BSU','Benue State University','Makurdi','Benue','NC','state',1992,7.7300,8.5400,'med law bus sci art');
+S('aksu','AKSU','Akwa Ibom State University','Ikot Akpaden','Akwa Ibom','SS','state',2010,4.6200,7.7500,'eng sci agr bus art');
+S('fud','FUD','Federal University Dutse','Dutse','Jigawa','NW','fed',2011,11.7600,9.3400,'sci agr bus art');
+S("nuc-amadeusuniversity","Amadeus University","Amadeus University","Abia","Abia","SE","priv",0,5.53,7.49,"");
+S("nuc-michaelokparauniversityofagricultur","Michael Okpara Uni","Michael Okpara University of Agriculture","Abia","Abia","SE","fed",0,5.53,7.49,"");
+S("nuc-gregoryuniversity","Gregory University","Gregory University","Abia","Abia","SE","priv",0,5.53,7.49,"");
+S("nuc-clifforduniversity","Clifford Universit","Clifford University","Abia","Abia","SE","priv",0,5.53,7.49,"");
+S("nuc-spiritanuniversity","Spiritan Universit","Spiritan University","Abia","Abia","SE","priv",0,5.53,7.49,"");
+S("nuc-nigerianbritishuniversity","Nigerian British U","Nigerian British University","Abia","Abia","SE","priv",0,5.53,7.49,"");
+S("nuc-luxmundiuniversity","Lux Mundi Universi","Lux Mundi University","Abia","Abia","SE","priv",0,5.53,7.49,"");
+S("nuc-adamawastateuniversity","Adamawa State Univ","Adamawa State University","Adamawa","Adamawa","NE","state",0,9.21,12.48,"");
+S("nuc-modibboadamauniversity","Modibbo Adama Univ","Modibbo Adama University","Adamawa","Adamawa","NE","fed",0,9.21,12.48,"");
+S("nuc-federaluniversityofagriculturemubi","Federal University","Federal University of Agriculture Mubi","Adamawa","Adamawa","NE","fed",0,9.21,12.48,"");
+S("nuc-southernatlanticuniversity","Southern Atlantic ","Southern Atlantic University","Akwa Ibom","Akwa Ibom","SS","priv",0,5.02,7.93,"");
+S("nuc-federaluniversityofagricultureandte","Federal University","Federal University of Agriculture and Technology Obio-Akpa","Akwa Ibom","Akwa Ibom","SS","fed",0,5.02,7.93,"");
+S("nuc-federaluniversityoftechnologyikotab","Federal University","Federal University of Technology Ikot Abasi","Akwa Ibom","Akwa Ibom","SS","fed",0,5.02,7.93,"");
+S("nuc-universityofmaritimestudiesoron","University of Mari","University of Maritime Studies Oron","Akwa Ibom","Akwa Ibom","SS","fed",0,5.02,7.93,"");
+S("nuc-obonguniversity","Obong University","Obong University","Akwa Ibom","Akwa Ibom","SS","priv",0,5.02,7.93,"");
+S("nuc-ritmanuniversity","Ritman University","Ritman University","Akwa Ibom","Akwa Ibom","SS","priv",0,5.02,7.93,"");
+S("nuc-topfaithuniversity","Topfaith Universit","Topfaith University","Akwa Ibom","Akwa Ibom","SS","priv",0,5.02,7.93,"");
+S("nuc-chukwuemekaodumegwuojukwuuniversity","Chukwuemeka Odumeg","Chukwuemeka Odumegwu Ojukwu University","Anambra","Anambra","SE","state",0,6.21,7.07,"");
+S("nuc-universityontheniger","University on the ","University on the Niger","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-shanahanuniversity","Shanahan Universit","Shanahan University","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-madonnauniversity","Madonna University","Madonna University","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-tansianuniversity","Tansian University","Tansian University","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-pauluniversity","Paul University","Paul University","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-legacyuniversity","Legacy University","Legacy University","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-peteruniversity","Peter University","Peter University","Anambra","Anambra","SE","priv",0,6.21,7.07,"");
+S("nuc-saaduzunguruniversity","Sa'adu Zungur Univ","Sa'adu Zungur University","Bauchi","Bauchi","NE","state",0,10.31,9.84,"");
+S("nuc-abubakartafawabalewauniversity","Abubakar Tafawa Ba","Abubakar Tafawa Balewa University","Bauchi","Bauchi","NE","fed",0,10.31,9.84,"");
+S("nuc-federaluniversityofhealthsciencesaz","Federal University","Federal University of Health Sciences Azare","Bauchi","Bauchi","NE","fed",0,10.31,9.84,"");
+S("nuc-hensarduniversity","Hensard University","Hensard University","Bayelsa","Bayelsa","SS","priv",0,4.92,6.26,"");
+S("nuc-nigerdeltauniversity","Niger Delta Univer","Niger Delta University","Bayelsa","Bayelsa","SS","state",0,4.92,6.26,"");
+S("nuc-universityofafricatoruorua","University of Afri","University of Africa Toru-Orua","Bayelsa","Bayelsa","SS","state",0,4.92,6.26,"");
+S("nuc-bayelsamedicaluniversity","Bayelsa Medical Un","Bayelsa Medical University","Bayelsa","Bayelsa","SS","state",0,4.92,6.26,"");
+S("nuc-federaluniversityotuoke","Federal University","Federal University Otuoke","Bayelsa","Bayelsa","SS","fed",0,4.92,6.26,"");
+S("nuc-federaluniversityofagriculturebassa","Federal University","Federal University of Agriculture Bassam-Bari","Bayelsa","Bayelsa","SS","fed",0,4.92,6.26,"");
+S("nuc-josephsarwuantarkauniversity","Joseph Sarwuan Tar","Joseph Sarwuan Tarka University","Benue","Benue","NC","fed",0,7.73,8.54,"");
+S("nuc-federaluniversityofhealthsciencesot","Federal University","Federal University of Health Sciences Otukpo","Benue","Benue","NC","fed",0,7.73,8.54,"");
+S("nuc-universityofmkar","University of Mkar","University of Mkar","Benue","Benue","NC","priv",0,7.73,8.54,"");
+S("nuc-bornostateuniversity","Borno State Univer","Borno State University","Borno","Borno","NE","state",0,11.84,13.15,"");
+S("nuc-nigerianarmyuniversitybiu","Nigerian Army Univ","Nigerian Army University Biu","Borno","Borno","NE","fed",0,11.84,13.15,"");
+S("nuc-alansaruniversity","Al-Ansar Universit","Al-Ansar University","Borno","Borno","NE","priv",0,11.84,13.15,"");
+S("nuc-britishcanadianuniversity","British Canadian U","British Canadian University","Cross River","Cross River","SS","priv",0,4.95,8.32,"");
+S("nuc-thedukemedicaluniversity","The Duke Medical U","The Duke Medical University","Cross River","Cross River","SS","priv",0,4.95,8.32,"");
+S("nuc-crossriveruniversityoftechnology","Cross River Univer","Cross River University of Technology","Cross River","Cross River","SS","state",0,4.95,8.32,"");
+S("nuc-crossriveruniversityofeducationande","Cross River Univer","Cross River University of Education and Entrepreneurship","Cross River","Cross River","SS","state",0,4.95,8.32,"");
+S("nuc-arthurjarvisuniversity","Arthur Jarvis Univ","Arthur Jarvis University","Cross River","Cross River","SS","priv",0,4.95,8.32,"");
+S("nuc-havillauniversity","Havilla University","Havilla University","Cross River","Cross River","SS","priv",0,4.95,8.32,"");
+S("nuc-universityofdeltaagbor","University of Delt","University of Delta Agbor","Delta","Delta","SS","state",0,5.89,5.68,"");
+S("nuc-universityofscienceandtechnologyozo","University of Scie","University of Science and Technology Ozoro","Delta","Delta","SS","state",0,5.89,5.68,"");
+S("nuc-dennisosadebeyuniversity","Dennis Osadebey Un","Dennis Osadebey University","Delta","Delta","SS","state",0,5.89,5.68,"");
+S("nuc-nigeriamaritimeuniversity","Nigeria Maritime U","Nigeria Maritime University","Delta","Delta","SS","fed",0,5.89,5.68,"");
+S("nuc-admiraltyuniversity","Admiralty Universi","Admiralty University","Delta","Delta","SS","fed",0,5.89,5.68,"");
+S("nuc-federaluniversityofhealthscienceskw","Federal University","Federal University of Health Sciences Kwale","Delta","Delta","SS","fed",0,5.89,5.68,"");
+S("nuc-novenauniversity","Novena University","Novena University","Delta","Delta","SS","priv",0,5.89,5.68,"");
+S("nuc-westerndeltauniversity","Western Delta Univ","Western Delta University","Delta","Delta","SS","priv",0,5.89,5.68,"");
+S("nuc-michaelandceciliaibruuniversity","Michael and Cecili","Michael and Cecilia Ibru University","Delta","Delta","SS","priv",0,5.89,5.68,"");
+S("nuc-edwinclarkuniversity","Edwin Clark Univer","Edwin Clark University","Delta","Delta","SS","priv",0,5.89,5.68,"");
+S("nuc-margaretlawrenceuniversity","Margaret Lawrence ","Margaret Lawrence University","Delta","Delta","SS","priv",0,5.89,5.68,"");
+S("nuc-sportsuniversityidumujeugboko","Sports University ","Sports University Idumuje-Ugboko","Delta","Delta","SS","priv",0,5.89,5.68,"");
+S("nuc-ebonyistateuniversity","Ebonyi State Unive","Ebonyi State University","Ebonyi","Ebonyi","SE","state",0,6.32,8.11,"");
+S("nuc-alexekwuemefederaluniversityndufual","Alex Ekwueme Feder","Alex Ekwueme Federal University Ndufu-Alike","Ebonyi","Ebonyi","SE","fed",0,6.32,8.11,"");
+S("nuc-kingdavidumahiuniversityofmedicalsc","King David Umahi U","King David Umahi University of Medical Sciences","Ebonyi","Ebonyi","SE","fed",0,6.32,8.11,"");
+S("nuc-evangeluniversity","Evangel University","Evangel University","Ebonyi","Ebonyi","SE","priv",0,6.32,8.11,"");
+S("nuc-edouniversityiyamho","Edo University Iya","Edo University Iyamho","Edo","Edo","SS","state",0,6.34,5.62,"");
+S("nuc-lighthouseuniversity","Lighthouse Univers","Lighthouse University","Edo","Edo","SS","priv",0,6.34,5.62,"");
+S("nuc-bensonidahosauniversity","Benson Idahosa Uni","Benson Idahosa University","Edo","Edo","SS","priv",0,6.34,5.62,"");
+S("nuc-wellspringuniversity","Wellspring Univers","Wellspring University","Edo","Edo","SS","priv",0,6.34,5.62,"");
+S("nuc-gloriousvisionuniversity","Glorious Vision Un","Glorious Vision University","Edo","Edo","SS","priv",0,6.34,5.62,"");
+S("nuc-mudiameuniversity","Mudiame University","Mudiame University","Edo","Edo","SS","priv",0,6.34,5.62,"");
+S("nuc-hillsideuniversityofscienceandtechn","Hillside Universit","Hillside University of Science and Technology","Ekiti","Ekiti","SW","priv",0,7.62,5.22,"");
+S("nuc-veniteuniversity","Venite University","Venite University","Ekiti","Ekiti","SW","priv",0,7.62,5.22,"");
+S("nuc-bamideleolumiluauniversityofeducati","Bamidele Olumilua ","Bamidele Olumilua University of Education Science and Technology","Ekiti","Ekiti","SW","state",0,7.62,5.22,"");
+S("nuc-federaluniversityoftechnologyandenv","Federal University","Federal University of Technology and Environmental Studies Iyin-Ekiti","Ekiti","Ekiti","SW","fed",0,7.62,5.22,"");
+S("nuc-madukauniversity","Maduka University","Maduka University","Enugu","Enugu","SE","priv",0,6.45,7.5,"");
+S("nuc-peacelanduniversity","Peaceland Universi","Peaceland University","Enugu","Enugu","SE","priv",0,6.45,7.5,"");
+S("nuc-enugustateuniversityofmedicalandapp","Enugu State Univer","Enugu State University of Medical and Applied Sciences","Enugu","Enugu","SE","state",0,6.45,7.5,"");
+S("nuc-federaluniversityofalliedhealthscie","Federal University","Federal University of Allied Health Sciences Enugu","Enugu","Enugu","SE","fed",0,6.45,7.5,"");
+S("nuc-caritasuniversity","Caritas University","Caritas University","Enugu","Enugu","SE","priv",0,6.45,7.5,"");
+S("nuc-renaissanceuniversity","Renaissance Univer","Renaissance University","Enugu","Enugu","SE","priv",0,6.45,7.5,"");
+S("nuc-godfreyokoyeuniversity","Godfrey Okoye Univ","Godfrey Okoye University","Enugu","Enugu","SE","priv",0,6.45,7.5,"");
+S("nuc-coalcityuniversity","Coal City Universi","Coal City University","Enugu","Enugu","SE","priv",0,6.45,7.5,"");
+S("nuc-canadianuniversityofnigeria","Canadian Universit","Canadian University of Nigeria","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-mivaopenuniversity","Miva Open Universi","Miva Open University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-cosmopolitanuniversity","Cosmopolitan Unive","Cosmopolitan University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-amajuniversity","Amaj University","Amaj University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-primeuniversity","Prime University","Prime University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-almuhibbahopenuniversity","Al-Muhibbah Open U","Al-Muhibbah Open University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-africanschoolofeconomics","African School of ","African School of Economics","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-eranovauniversity","Eranova University","Eranova University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-leadershipuniversity","Leadership Univers","Leadership University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-nationalopenuniversityofnigeria","National Open Univ","National Open University of Nigeria","FCT","FCT","NC","fed",0,9.06,7.49,"");
+S("nuc-africanaviationandaerospaceuniversi","African Aviation a","African Aviation and Aerospace University","FCT","FCT","NC","fed",0,9.06,7.49,"");
+S("nuc-nationaluniversityofscienceandtechn","National Universit","National University of Science and Technology","FCT","FCT","NC","fed",0,9.06,7.49,"");
+S("nuc-veritasuniversity","Veritas University","Veritas University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-africanuniversityofscienceandtechno","African University","African University of Science and Technology","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-bazeuniversity","Baze University","Baze University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-philomathuniversity","Philomath Universi","Philomath University","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-europeanuniversityofnigeria","European Universit","European University of Nigeria","FCT","FCT","NC","priv",0,9.06,7.49,"");
+S("nuc-gombestateuniversity","Gombe State Univer","Gombe State University","Gombe","Gombe","NE","state",0,10.29,11.17,"");
+S("nuc-federaluniversitykashere","Federal University","Federal University Kashere","Gombe","Gombe","NE","fed",0,10.29,11.17,"");
+S("nuc-northeasternuniversitygombe","North Eastern Univ","North Eastern University Gombe","Gombe","Gombe","NE","priv",0,10.29,11.17,"");
+S("nuc-kingsleyozumbambadiweuniversity","Kingsley Ozumba Mb","Kingsley Ozumba Mbadiwe University","Imo","Imo","SE","state",0,5.49,7.04,"");
+S("nuc-universityofagricultureandenvironme","University of Agri","University of Agriculture and Environmental Sciences","Imo","Imo","SE","state",0,5.49,7.04,"");
+S("nuc-alvanikokufederaluniversityofeducat","Alvan Ikoku Federa","Alvan Ikoku Federal University of Education","Imo","Imo","SE","fed",0,5.49,7.04,"");
+S("nuc-hezekiahuniversity","Hezekiah Universit","Hezekiah University","Imo","Imo","SE","priv",0,5.49,7.04,"");
+S("nuc-claretianuniversityofnigeria","Claretian Universi","Claretian University of Nigeria","Imo","Imo","SE","priv",0,5.49,7.04,"");
+S("nuc-sulelamidouniversity","Sule Lamido Univer","Sule Lamido University","Jigawa","Jigawa","NW","state",0,11.76,9.34,"");
+S("nuc-federaluniversityoftechnologybabura","Federal University","Federal University of Technology Babura","Jigawa","Jigawa","NW","fed",0,11.76,9.34,"");
+S("nuc-jigawastateuniversityofalliedandmed","Jigawa State Unive","Jigawa State University of Allied and Medical Science","Jigawa","Jigawa","NW","state",0,11.76,9.34,"");
+S("nuc-kadunastateuniversity","Kaduna State Unive","Kaduna State University","Kaduna","Kaduna","NW","state",0,10.51,7.44,"");
+S("nuc-nigeriandefenceacademy","Nigerian Defence A","Nigerian Defence Academy","Kaduna","Kaduna","NW","fed",0,10.51,7.44,"");
+S("nuc-airforceinstituteoftechnology","Air Force Institut","Air Force Institute of Technology","Kaduna","Kaduna","NW","fed",0,10.51,7.44,"");
+S("nuc-federaluniversityofeducationzaria","Federal University","Federal University of Education Zaria","Kaduna","Kaduna","NW","fed",0,10.51,7.44,"");
+S("nuc-federaluniversityofappliedsciencesk","Federal University","Federal University of Applied Sciences Kachia","Kaduna","Kaduna","NW","fed",0,10.51,7.44,"");
+S("nuc-greenfielduniversity","Greenfield Univers","Greenfield University","Kaduna","Kaduna","NW","priv",0,10.51,7.44,"");
+S("nuc-alikodangoteuniversityofscienceandt","Aliko Dangote Univ","Aliko Dangote University of Science and Technology","Kano","Kano","NW","state",0,12.0,8.52,"");
+S("nuc-northwestuniversitykano","Northwest Universi","Northwest University Kano","Kano","Kano","NW","state",0,12.0,8.52,"");
+S("nuc-federaluniversityofscienceandtechno","Federal University","Federal University of Science and Technology Kabo","Kano","Kano","NW","fed",0,12.0,8.52,"");
+S("nuc-nigeriapoliceacademywudil","Nigeria Police Aca","Nigeria Police Academy Wudil","Kano","Kano","NW","fed",0,12.0,8.52,"");
+S("nuc-yusufmaitamasulefederaluniversityof","Yusuf Maitama Sule","Yusuf Maitama Sule Federal University of Education","Kano","Kano","NW","fed",0,12.0,8.52,"");
+S("nuc-skylineuniversity","Skyline University","Skyline University","Kano","Kano","NW","priv",0,12.0,8.52,"");
+S("nuc-alistiqamauniversity","Al-Istiqama Univer","Al-Istiqama University","Kano","Kano","NW","priv",0,12.0,8.52,"");
+S("nuc-maryamabachaamericanuniversityofnig","Maryam Abacha Amer","Maryam Abacha American University of Nigeria","Kano","Kano","NW","priv",0,12.0,8.52,"");
+S("nuc-capitalcityuniversity","Capital City Unive","Capital City University","Kano","Kano","NW","priv",0,12.0,8.52,"");
+S("nuc-khalifaisiyakurabiuuniversity","Khalifa Isiyaku Ra","Khalifa Isiyaku Rabiu University","Kano","Kano","NW","priv",0,12.0,8.52,"");
+S("nuc-babaahmeduniversity","Baba-Ahmed Univers","Baba-Ahmed University","Kano","Kano","NW","priv",0,12.0,8.52,"");
+S("nuc-umarumusayaraduauniversity","Umaru Musa Yar'Adu","Umaru Musa Yar'Adua University","Katsina","Katsina","NW","state",0,12.99,7.6,"");
+S("nuc-federaluniversitydutsinma","Federal University","Federal University Dutsin-Ma","Katsina","Katsina","NW","fed",0,12.99,7.6,"");
+S("nuc-federaluniversityoftransportationda","Federal University","Federal University of Transportation Daura","Katsina","Katsina","NW","fed",0,12.99,7.6,"");
+S("nuc-federaluniversityofhealthsciencesfu","Federal University","Federal University of Health Sciences Funtua","Katsina","Katsina","NW","fed",0,12.99,7.6,"");
+S("nuc-alqalamuniversity","Al-Qalam Universit","Al-Qalam University","Katsina","Katsina","NW","priv",0,12.99,7.6,"");
+S("nuc-kebbistateuniversityofscienceandtec","Kebbi State Univer","Kebbi State University of Science and Technology","Kebbi","Kebbi","NW","state",0,12.45,4.2,"");
+S("nuc-federaluniversitybirninkebbi","Federal University","Federal University Birnin Kebbi","Kebbi","Kebbi","NW","fed",0,12.45,4.2,"");
+S("nuc-federaluniversityofagriculturezuru","Federal University","Federal University of Agriculture Zuru","Kebbi","Kebbi","NW","fed",0,12.45,4.2,"");
+S("nuc-rayhaanuniversity","Rayhaan University","Rayhaan University","Kebbi","Kebbi","NW","priv",0,12.45,4.2,"");
+S("nuc-princeabubakarauduuniversity","Prince Abubakar Au","Prince Abubakar Audu University","Kogi","Kogi","NC","state",0,7.8,6.73,"");
+S("nuc-confluenceuniversityofscienceandtec","Confluence Univers","Confluence University of Science and Technology","Kogi","Kogi","NC","state",0,7.8,6.73,"");
+S("nuc-kogistateuniversitykabba","Kogi State Univers","Kogi State University Kabba","Kogi","Kogi","NC","state",0,7.8,6.73,"");
+S("nuc-federaluniversitylokoja","Federal University","Federal University Lokoja","Kogi","Kogi","NC","fed",0,7.8,6.73,"");
+S("nuc-salemuniversity","Salem University","Salem University","Kogi","Kogi","NC","priv",0,7.8,6.73,"");
+S("nuc-kwarastateuniversityofeducation","Kwara State Univer","Kwara State University of Education","Kwara","Kwara","NC","state",0,8.5,4.55,"");
+S("nuc-alhikmahuniversity","Al-Hikmah Universi","Al-Hikmah University","Kwara","Kwara","NC","priv",0,8.5,4.55,"");
+S("nuc-summituniversity","Summit University","Summit University","Kwara","Kwara","NC","priv",0,8.5,4.55,"");
+S("nuc-thomasadewumiuniversity","Thomas Adewumi Uni","Thomas Adewumi University","Kwara","Kwara","NC","priv",0,8.5,4.55,"");
+S("nuc-ahmanpategiuniversity","Ahman Pategi Unive","Ahman Pategi University","Kwara","Kwara","NC","priv",0,8.5,4.55,"");
+S("nuc-universityofoffa","University of Offa","University of Offa","Kwara","Kwara","NC","priv",0,8.5,4.55,"");
+S("nuc-muhammadkamaluddeenuniversity","Muhammad Kamalud-D","Muhammad Kamalud-Deen University","Kwara","Kwara","NC","priv",0,8.5,4.55,"");
+S("nuc-lagosstateuniversityofeducation","Lagos State Univer","Lagos State University of Education","Lagos","Lagos","SW","state",0,6.52,3.38,"");
+S("nuc-lagosstateuniversityofscienceandtec","Lagos State Univer","Lagos State University of Science and Technology","Lagos","Lagos","SW","state",0,6.52,3.38,"");
+S("nuc-nigerianuniversityoftechnologyandma","Nigerian Universit","Nigerian University of Technology and Management","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-calebuniversity","Caleb University","Caleb University","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-augustineuniversity","Augustine Universi","Augustine University","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-anchoruniversity","Anchor University","Anchor University","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-ekouniversityofmedicalsciences","Eko University of ","Eko University of Medical Sciences","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-maranathauniversity","Maranatha Universi","Maranatha University","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-jameshopeuniversity","James Hope Univers","James Hope University","Lagos","Lagos","SW","priv",0,6.52,3.38,"");
+S("nuc-federaluniversitylafia","Federal University","Federal University Lafia","Nasarawa","Nasarawa","NC","fed",0,8.5,8.52,"");
+S("nuc-binghamuniversity","Bingham University","Bingham University","Nasarawa","Nasarawa","NC","priv",0,8.5,8.52,"");
+S("nuc-avemariauniversity","Ave-Maria Universi","Ave-Maria University","Nasarawa","Nasarawa","NC","priv",0,8.5,8.52,"");
+S("nuc-mewaruniversity","Mewar University","Mewar University","Nasarawa","Nasarawa","NC","priv",0,8.5,8.52,"");
+S("nuc-ibrahimbadamasibabangidauniversity","Ibrahim Badamasi B","Ibrahim Badamasi Babangida University","Niger","Niger","NC","state",0,9.61,6.56,"");
+S("nuc-abdulkadirkureuniversity","Abdulkadir Kure Un","Abdulkadir Kure University","Niger","Niger","NC","state",0,9.61,6.56,"");
+S("nuc-federaluniversityofeducationkontago","Federal University","Federal University of Education Kontagora","Niger","Niger","NC","fed",0,9.61,6.56,"");
+S("nuc-edusokouniversity","Edusoko University","Edusoko University","Niger","Niger","NC","priv",0,9.61,6.56,"");
+S("nuc-newgateuniversity","Newgate University","Newgate University","Niger","Niger","NC","priv",0,9.61,6.56,"");
+S("nuc-moshoodabiolauniversityofscienceand","Moshood Abiola Uni","Moshood Abiola University of Science and Technology","Ogun","Ogun","SW","state",0,7.15,3.35,"");
+S("nuc-crawforduniversity","Crawford Universit","Crawford University","Ogun","Ogun","SW","priv",0,7.15,3.35,"");
+S("nuc-crescentuniversity","Crescent Universit","Crescent University","Ogun","Ogun","SW","priv",0,7.15,3.35,"");
+S("nuc-mcphersonuniversity","McPherson Universi","McPherson University","Ogun","Ogun","SW","priv",0,7.15,3.35,"");
+S("nuc-mountaintopuniversity","Mountain Top Unive","Mountain Top University","Ogun","Ogun","SW","priv",0,7.15,3.35,"");
+S("nuc-trinityuniversity","Trinity University","Trinity University","Ogun","Ogun","SW","priv",0,7.15,3.35,"");
+S("nuc-adekunleajasinuniversity","Adekunle Ajasin Un","Adekunle Ajasin University","Ondo","Ondo","SW","state",0,7.26,5.2,"");
+S("nuc-olusegunagaguuniversityofscienceand","Olusegun Agagu Uni","Olusegun Agagu University of Science and Technology","Ondo","Ondo","SW","state",0,7.26,5.2,"");
+S("nuc-universityofmedicalsciencesondo","University of Medi","University of Medical Sciences Ondo","Ondo","Ondo","SW","state",0,7.26,5.2,"");
+S("nuc-wesleyuniversity","Wesley University","Wesley University","Ondo","Ondo","SW","priv",0,7.26,5.2,"");
+S("nuc-universityofilesa","University of Iles","University of Ilesa","Osun","Osun","SW","state",0,7.77,4.56,"");
+S("nuc-federaluniversityofhealthsciencesil","Federal University","Federal University of Health Sciences Ila Orangun","Osun","Osun","SW","fed",0,7.77,4.56,"");
+S("nuc-josephayobabalolauniversity","Joseph Ayo Babalol","Joseph Ayo Babalola University","Osun","Osun","SW","priv",0,7.77,4.56,"");
+S("nuc-fountainuniversity","Fountain Universit","Fountain University","Osun","Osun","SW","priv",0,7.77,4.56,"");
+S("nuc-oduduwauniversity","Oduduwa University","Oduduwa University","Osun","Osun","SW","priv",0,7.77,4.56,"");
+S("nuc-adelekeuniversity","Adeleke University","Adeleke University","Osun","Osun","SW","priv",0,7.77,4.56,"");
+S("nuc-leadcityuniversity","Lead City Universi","Lead City University","Oyo","Oyo","SW","priv",0,7.4,3.91,"");
+S("nuc-ajayicrowtheruniversity","Ajayi Crowther Uni","Ajayi Crowther University","Oyo","Oyo","SW","priv",0,7.4,3.91,"");
+S("nuc-dominicanuniversity","Dominican Universi","Dominican University","Oyo","Oyo","SW","priv",0,7.4,3.91,"");
+S("nuc-koladaisiuniversity","Kola Daisi Univers","Kola Daisi University","Oyo","Oyo","SW","priv",0,7.4,3.91,"");
+S("nuc-preciouscornerstoneuniversity","Precious Cornersto","Precious Cornerstone University","Oyo","Oyo","SW","priv",0,7.4,3.91,"");
+S("nuc-plateaustateuniversity","Plateau State Univ","Plateau State University","Plateau","Plateau","NC","state",0,9.93,8.89,"");
+S("nuc-federaluniversityofeducationpankshi","Federal University","Federal University of Education Pankshin","Plateau","Plateau","NC","fed",0,9.93,8.89,"");
+S("nuc-karlkummuniversity","Karl Kumm Universi","Karl Kumm University","Plateau","Plateau","NC","priv",0,9.93,8.89,"");
+S("nuc-ignatiusajuruuniversityofeducation","Ignatius Ajuru Uni","Ignatius Ajuru University of Education","Rivers","Rivers","SS","state",0,4.81,7.04,"");
+S("nuc-pamouniversityofmedicalsciences","PAMO University of","PAMO University of Medical Sciences","Rivers","Rivers","SS","priv",0,4.81,7.04,"");
+S("nuc-sokotostateuniversity","Sokoto State Unive","Sokoto State University","Sokoto","Sokoto","NW","state",0,13.06,5.24,"");
+S("nuc-tarabastateuniversity","Taraba State Unive","Taraba State University","Taraba","Taraba","NE","state",0,8.9,11.37,"");
+S("nuc-federaluniversitywukari","Federal University","Federal University Wukari","Taraba","Taraba","NE","fed",0,8.9,11.37,"");
+S("nuc-yobestateuniversity","Yobe State Univers","Yobe State University","Yobe","Yobe","NE","state",0,11.75,11.96,"");
+S("nuc-federaluniversitygashua","Federal University","Federal University Gashua","Yobe","Yobe","NE","fed",0,11.75,11.96,"");
+S("nuc-zamfarastateuniversity","Zamfara State Univ","Zamfara State University","Zamfara","Zamfara","NW","state",0,12.17,6.66,"");
+S("nuc-federaluniversitygusau","Federal University","Federal University Gusau","Zamfara","Zamfara","NW","fed",0,12.17,6.66,"");
 SCHOOLS.forEach(function(s){ if(!s.country) s.country='Nigeria'; });
 var byId={}; SCHOOLS.forEach(function(s){byId[s.id]=s;});
 
@@ -990,6 +1211,68 @@ function select(id,opts){
   }
   renderCard(true); renderList(); renderQuick();
 }
+/* Only display photographs individually reviewed for campus identity and reuse rights.
+   To add one, supply an entry in VERIFIED_CAMPUS_PHOTOS keyed by school id:
+   {url:'https://...', source:'https://...', author:'...', license:'CC BY-SA 4.0', caption:'...'}
+   Five or more entries per university are supported. Do not add search results unverified. */
+var VERIFIED_CAMPUS_PHOTOS={"unilag":[{"url":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Scenes_from_The_University_of_Lagos_Campus_01.jpg?width=960","source":"https://commons.wikimedia.org/wiki/File:Scenes_from_The_University_of_Lagos_Campus_01.jpg","author":"Eze the second","license":"CC BY-SA 4.0","caption":"Lagoon front and university road"},{"url":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Scenes_from_The_University_of_Lagos_Campus_02.jpg?width=960","source":"https://commons.wikimedia.org/wiki/File:Scenes_from_The_University_of_Lagos_Campus_02.jpg","author":"Eze the second","license":"CC BY-SA 4.0","caption":"Lagoon front campus road"},{"url":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Architectural_view_of_the_senate_building_University_of_lagos,_Nigeria.jpg?width=960","source":"https://commons.wikimedia.org/wiki/File:Architectural_view_of_the_senate_building_University_of_lagos,_Nigeria.jpg","author":"Johnbrainyvisuals","license":"CC BY-SA 4.0","caption":"Senate building"},{"url":"https://commons.wikimedia.org/wiki/Special:Redirect/file/The_Senate_House_complex_of_the_University_of_Lagos.jpg?width=960","source":"https://commons.wikimedia.org/wiki/File:The_Senate_House_complex_of_the_University_of_Lagos.jpg","author":"Explora20","license":"CC BY-SA 4.0","caption":"Senate House complex"},{"url":"https://commons.wikimedia.org/wiki/Special:Redirect/file/Unilag_High_Rise.jpg?width=960","source":"https://commons.wikimedia.org/wiki/File:Unilag_High_Rise.jpg","author":"Chukwuka Tolulope Obu","license":"CC BY-SA 4.0","caption":"University residential high-rise buildings"}]};
+/* Load Commons images for every school on demand; do not pretend search results
+   have been individually verified. Strict title matching reduces wrong campuses. */
+var CAMPUS_PHOTO_CACHE={};
+function galleryHTML(s){
+  return '<section class="cc-gallery" aria-label="Campus photographs"><h3>Campus photos</h3>'+
+    '<p id="ccGalleryStatus" role="status">Looking for campus photos from Wikimedia Commons…</p>'+
+    '<div id="ccGalleryContent"></div></section>';
+}
+function wireGallery(s){
+  var content=$('ccGalleryContent'), status=$('ccGalleryStatus');
+  if(!content||!status)return;
+  var currentId=s.id;
+  function live(){return st.selected===currentId && $('ccGalleryContent')===content;}
+  function draw(photos){
+    if(!live())return;
+    if(!photos.length){status.textContent='No confidently matched campus photographs found on Wikimedia Commons for this university yet.';return;}
+    status.textContent=photos.length+' Wikimedia Commons photo'+(photos.length===1?'':'s')+' found. Check each photo’s source to confirm the campus.';
+    content.innerHTML='<img class="cc-photo" id="ccMainPhoto" loading="lazy" alt="">'+
+      '<div class="cc-thumbs" aria-label="Choose a photo">'+photos.map(function(p,i){return '<button type="button" data-photo="'+i+'" aria-label="Photo '+(i+1)+'" aria-pressed="'+(i===0)+'"><img loading="lazy" src="'+esc(p.thumb)+'" alt=""></button>';}).join('')+'</div>'+
+      '<span class="cc-credit" id="ccPhotoCredit"></span>';
+    function choose(i){
+      var p=photos[i], img=$('ccMainPhoto'), credit=$('ccPhotoCredit');
+      if(!img||!credit)return;
+      img.src=p.url; img.alt=p.caption;
+      credit.textContent='';
+      credit.appendChild(document.createTextNode(p.caption+' · '+p.author+' · '+p.license+' · '));
+      var link=document.createElement('a');link.href=p.source;link.target='_blank';link.rel='noopener noreferrer';link.textContent='View source and license';credit.appendChild(link);
+      content.querySelectorAll('.cc-thumbs button').forEach(function(btn,j){btn.setAttribute('aria-pressed',String(j===i));});
+    }
+    content.querySelectorAll('.cc-thumbs button').forEach(function(btn){btn.onclick=function(){choose(Number(btn.dataset.photo));};});
+    choose(0);
+  }
+  if(CAMPUS_PHOTO_CACHE[s.id]){draw(CAMPUS_PHOTO_CACHE[s.id]);return;}
+  var fixed=VERIFIED_CAMPUS_PHOTOS[s.id]||[];
+  /* Exact phrase search, restricted to file pages. Some campuses have fewer than 5. */
+  var q='"'+s.name.replace(/["']/g,'')+'"';
+  var params=new URLSearchParams({action:'query',format:'json',origin:'*',generator:'search',gsrsearch:q,gsrnamespace:'6',gsrlimit:'45',prop:'imageinfo',iiprop:'url|mime|extmetadata',iiurlwidth:'900',iiextmetadatafilter:'Artist|LicenseShortName|LicenseUrl'});
+  var timeout=new AbortController();var t=setTimeout(function(){timeout.abort();},13000);
+  fetch('https://commons.wikimedia.org/w/api.php?'+params.toString(),{signal:timeout.signal})
+  .then(function(r){if(!r.ok)throw Error('API unavailable');return r.json();})
+  .then(function(data){
+    var names=s.name.toLowerCase().replace(/[^a-z0-9 ]/g,' ').split(/\s+/).filter(function(w){return w.length>2&&!/^(the|and|for|of|university|federal|state|technology|science|college)$/.test(w);});
+    var results=Object.values((data.query&&data.query.pages)||{}).filter(function(p){
+      var ii=p.imageinfo&&p.imageinfo[0]; if(!ii||!ii.thumburl||!/^image\/(jpeg|png|webp)$/i.test(ii.mime||''))return false;
+      var title=p.title.toLowerCase().replace(/[_-]/g,' ');
+      /* Avoid unrelated search hits: require distinctive institution words in filename. */
+      return names.length && names.every(function(w){return title.indexOf(w)>=0;});
+    }).map(function(p){
+      var ii=p.imageinfo[0], meta=ii.extmetadata||{};
+      function clean(v){var div=document.createElement('div');div.innerHTML=(v||'').slice(0,500);return (div.textContent||'').trim().slice(0,130);}
+      return {url:ii.thumburl,thumb:ii.thumburl,source:ii.descriptionurl||'https://commons.wikimedia.org/wiki/'+encodeURIComponent(p.title),caption:p.title.replace(/^File:/,'').replace(/\.[^.]+$/,'').replace(/_/g,' '),author:clean(meta.Artist&&meta.Artist.value)||'Creator listed on source page',license:clean(meta.LicenseShortName&&meta.LicenseShortName.value)||'See source for license'};
+    }).slice(0,12);
+    var seen=new Set();var photos=fixed.concat(results).filter(function(p){var k=p.source;if(seen.has(k))return false;seen.add(k);return true;}).slice(0,12).map(function(p){return Object.assign({thumb:p.url},p);});
+    CAMPUS_PHOTO_CACHE[s.id]=photos;draw(photos);
+  }).catch(function(){if(!live())return; if(fixed.length){draw(fixed.map(function(p){return Object.assign({thumb:p.url},p);}));}else{status.textContent='Campus photos could not load. Check your internet connection and try selecting this university again.';}})
+  .finally(function(){clearTimeout(t);});
+}
 function renderCard(animate){
   var c=$('card');
   var s=st.selected&&byId[st.selected];
@@ -1006,7 +1289,9 @@ function renderCard(animate){
     +'<div class="actions"><button type="button" class="btn btn-primary" id="cShort">'+(on?'Remove from shortlist':'Add to shortlist')+'</button>'
     +'<button type="button" class="btn" id="cAsk">Ask the advisor</button>'
     +'<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(s.name+' admission requirements')+'">Admission info</a></div>'
+    +galleryHTML(s)
     +'<p class="fine">Ownership is not a reliable indicator of international tuition. Confirm fees, programmes and admissions requirements on each university’s official website; JAMB applies to Nigerian institutions.</p></div>';
+  wireGallery(s);
   $('cardX').onclick=function(){ st.selected=null; if(map){ cache={}; schoolLayer.changed(); } renderCard(); renderList(); renderQuick(); };
   $('cShort').onclick=function(){ toggleShort(s.id); };
   $('cAsk').onclick=function(){ go('advisor'); ask('Tell me about '+s.name+' and whether it fits my profile.'); };
