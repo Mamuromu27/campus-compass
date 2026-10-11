@@ -1,0 +1,1430 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Campus Compass — Find Your Future</title>
+<meta name="theme-color" content="#102c3d">
+<meta name="description" content="Explore Nigerian universities, compare schools, and find the right campus for your future.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Conversational advisor polish */
+.pane-chat .thread{gap:18px;scroll-behavior:smooth}.pane-chat .msg.ai{background:var(--hover);padding:15px 17px;border:1px solid var(--rule);border-radius:18px 18px 18px 5px}.pane-chat .msg.me{border-radius:18px 18px 5px 18px;padding:12px 16px}.pane-chat .who{margin-bottom:9px}.pane-chat .body p{line-height:1.65}.pane-chat .quick{gap:8px}.pane-chat .quick .chip{border:1px solid var(--rule);border-radius:999px;padding:9px 13px;background:var(--paper);font-size:12.5px}.pane-chat .quick .chip:hover{border-color:var(--fed);background:var(--hover)}
+
+/* Layout: an indigo adire-cloth sea with Nigeria cut out in white. A flush control column on the left, edged with a resist-dye strip. Schools are shaped signposts: circle federal, diamond state, square private. */
+:root{
+  --paper:#f5f6fc; --ink:#101857; --muted:#586091; --rule:#d9ddf2; --hover:#e8ebfa; --sel:#dce1fa;
+  --mark:#ffe066; --mark-ink:#101857; --zobo:#e8305f;
+  --fed:#12a06b; --st:#f28c28; --pv:#7160ff; --label-ink:#0d1450; --pinink:#101857;
+  --sea:#c8d1f3; --land:#e6e9fa; --land-line:#9aa6dd; --nga:#ffffff; --shade:#8b97da; --river:#a4b3ef; --nga-label:#d3d8f4; --nb-label:#7480c2;
+  --strip-bg:#101857; --bar-bg:#101857; --hard:#101857;
+  --sea-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%23B3BEEA' stroke-width='1.5'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Ccircle cx='24' cy='24' r='5'/%3E%3C/g%3E%3Cg fill='%23B3BEEA'%3E%3Ccircle cx='24' cy='24' r='1.6'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='48' cy='0' r='2'/%3E%3Ccircle cx='0' cy='48' r='2'/%3E%3Ccircle cx='48' cy='48' r='2'/%3E%3C/g%3E%3C/svg%3E"); --strip-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='28' viewBox='0 0 14 28'%3E%3Cpath d='M7 2 12 7 7 12 2 7Z' fill='none' stroke='%23F5F6FC' stroke-width='1.4'/%3E%3Ccircle cx='7' cy='7' r='1.3' fill='%23F5F6FC'/%3E%3Cpath d='M7 16 12 21 7 26 2 21Z' fill='%23F5F6FC'/%3E%3C/svg%3E");
+  --shadow:0 12px 30px rgba(16,24,87,.22); --is-dark:0; --tile-filter:none;
+  --font-display:'Syne','Trebuchet MS',system-ui,sans-serif;
+  --font-body:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+  --paper:#121316; --ink:#f2f3f5; --muted:#9a9fa8; --rule:#272a30; --hover:#1b1d22; --sel:#262930;
+  --mark:#ffe066; --mark-ink:#17181b; --zobo:#ff4d7a;
+  --fed:#2fd39a; --st:#ffa94d; --pv:#9a8cff; --label-ink:#0e0f12; --pinink:#101114;
+  --sea:#0c0d10; --land:#1a1c21; --land-line:#30333a; --nga:#eceef1; --shade:#262930; --river:#3b404a; --nga-label:#c6c9d0; --nb-label:#6d737e;
+  --strip-bg:#f2f3f5; --bar-bg:#1b1d22; --hard:#2b2e35;
+  --sea-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%231A1D23' stroke-width='1.5'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Ccircle cx='24' cy='24' r='5'/%3E%3C/g%3E%3Cg fill='%231A1D23'%3E%3Ccircle cx='24' cy='24' r='1.6'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='48' cy='0' r='2'/%3E%3Ccircle cx='0' cy='48' r='2'/%3E%3Ccircle cx='48' cy='48' r='2'/%3E%3C/g%3E%3C/svg%3E"); --strip-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='28' viewBox='0 0 14 28'%3E%3Cpath d='M7 2 12 7 7 12 2 7Z' fill='none' stroke='%23121316' stroke-width='1.4'/%3E%3Ccircle cx='7' cy='7' r='1.3' fill='%23121316'/%3E%3Cpath d='M7 16 12 21 7 26 2 21Z' fill='%23121316'/%3E%3C/svg%3E");
+  --shadow:0 12px 30px rgba(0,0,0,.6); --is-dark:1; --tile-filter:invert(1) hue-rotate(180deg) grayscale(.6) brightness(.82) contrast(1.05);
+  color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#121316; --ink:#f2f3f5; --muted:#9a9fa8; --rule:#272a30; --hover:#1b1d22; --sel:#262930;
+  --mark:#ffe066; --mark-ink:#17181b; --zobo:#ff4d7a;
+  --fed:#2fd39a; --st:#ffa94d; --pv:#9a8cff; --label-ink:#0e0f12; --pinink:#101114;
+  --sea:#0c0d10; --land:#1a1c21; --land-line:#30333a; --nga:#eceef1; --shade:#262930; --river:#3b404a; --nga-label:#c6c9d0; --nb-label:#6d737e;
+  --strip-bg:#f2f3f5; --bar-bg:#1b1d22; --hard:#2b2e35;
+  --sea-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cg fill='none' stroke='%231A1D23' stroke-width='1.5'%3E%3Cpath d='M24 4 44 24 24 44 4 24Z'/%3E%3Ccircle cx='24' cy='24' r='5'/%3E%3C/g%3E%3Cg fill='%231A1D23'%3E%3Ccircle cx='24' cy='24' r='1.6'/%3E%3Ccircle cx='0' cy='0' r='2'/%3E%3Ccircle cx='48' cy='0' r='2'/%3E%3Ccircle cx='0' cy='48' r='2'/%3E%3Ccircle cx='48' cy='48' r='2'/%3E%3C/g%3E%3C/svg%3E"); --strip-img:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='28' viewBox='0 0 14 28'%3E%3Cpath d='M7 2 12 7 7 12 2 7Z' fill='none' stroke='%23121316' stroke-width='1.4'/%3E%3Ccircle cx='7' cy='7' r='1.3' fill='%23121316'/%3E%3Cpath d='M7 16 12 21 7 26 2 21Z' fill='%23121316'/%3E%3C/svg%3E");
+  --shadow:0 12px 30px rgba(0,0,0,.6); --is-dark:1; --tile-filter:invert(1) hue-rotate(180deg) grayscale(.6) brightness(.82) contrast(1.05);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.45;overflow:hidden;-webkit-font-smoothing:antialiased;transition:background-color .35s,color .35s}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--zobo);outline-offset:2px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.t-fed{--tc:var(--fed)} .t-state{--tc:var(--st)} .t-priv{--tc:var(--pv)}
+.glyph{display:inline-block;width:11px;height:11px;background:var(--tc);flex:none}
+.t-fed .glyph{border-radius:50%}
+.t-state .glyph{transform:rotate(45deg) scale(.8)}
+.t-priv .glyph{border-radius:2px}
+
+.app{position:relative;height:100%}
+.mapwrap{position:absolute;inset:0;min-width:0;overflow:hidden;background:var(--sea)}
+.sea{position:absolute;inset:-96px;background-color:var(--sea);background-image:var(--sea-img);background-size:48px 48px;animation:drift 60s linear infinite;will-change:transform;transition:background-color .35s}
+@keyframes drift{to{transform:translate(96px,96px)}}
+#map{position:absolute;inset:0}
+.maperr{position:absolute;inset:0;display:grid;place-items:center;padding:24px;text-align:center;color:var(--ink);font-weight:600}
+
+/* column */
+.panel{position:absolute;z-index:4;left:0;top:0;bottom:0;width:440px;max-width:100%;padding-right:14px;display:flex;flex-direction:column;background:var(--paper);transition:background-color .35s}
+.panel::after{content:"";position:absolute;top:0;right:0;bottom:0;width:14px;background-color:var(--strip-bg);background-image:var(--strip-img);background-size:14px 28px;background-repeat:repeat-y}
+.head{order:0;display:flex;align-items:center;gap:11px;padding:18px 22px 12px}
+.logo{width:36px;height:36px;border-radius:4px;background:var(--strip-bg);color:var(--paper);display:grid;place-items:center;flex:none}
+.logo svg{overflow:visible}
+.needle{transform-origin:12px 12px;transform:rotate(42deg);animation:swing 1.5s cubic-bezier(.3,1.5,.5,1) .35s both}
+@keyframes swing{from{transform:rotate(-170deg)}to{transform:rotate(42deg)}}
+.brand{font-family:var(--font-display);font-weight:800;font-size:19px;letter-spacing:-.025em}
+.themebtn{margin-left:auto;border:2px solid var(--ink);background:transparent;border-radius:4px;padding:4px 10px;font-size:13px;font-weight:700}
+.themebtn:hover{background:var(--hover)}
+.tabs{order:1;position:relative;display:flex;gap:24px;padding:0 22px;border-bottom:2px solid var(--rule)}
+.tab{position:relative;display:flex;align-items:center;gap:7px;border:0;background:transparent;padding:12px 0;font-family:var(--font-display);font-weight:700;font-size:14.5px;letter-spacing:-.01em;color:var(--muted);transition:color .2s}
+.tab:hover{color:var(--ink)}
+.tab svg{display:none;stroke:currentColor;fill:none;stroke-width:1.8}
+.tab[aria-selected="true"]{color:var(--ink)}
+.tab .n{font-family:var(--font-body);font-size:11.5px;font-weight:700;min-width:19px;line-height:19px;text-align:center;border-radius:10px;background:var(--zobo);color:#fff;font-variant-numeric:tabular-nums}
+.tab-ind{position:absolute;left:0;bottom:-2px;height:4px;width:0;background:var(--zobo);transition:transform .38s cubic-bezier(.6,0,.2,1),width .38s cubic-bezier(.6,0,.2,1)}
+.tab-map{display:none}
+.panelbody{order:2;flex:1;min-height:0;display:flex;flex-direction:column}
+.pane{display:none;flex:1;min-height:0;overflow:auto;padding:20px 22px 24px}
+.pane.on{display:flex;flex-direction:column;gap:18px}
+.pane>*{flex:0 0 auto}
+.pane-chat{overflow:hidden;padding-bottom:18px}
+.pane-chat.on{gap:12px}
+
+h1.hello{font-family:var(--font-display);font-weight:800;font-size:40px;line-height:.98;letter-spacing:-.035em;margin:0;text-wrap:balance}
+.hello-sub{margin:10px 0 0;color:var(--muted);font-size:15px;max-width:34ch}
+
+/* controls */
+.search{display:flex;align-items:center;gap:10px;border-bottom:2.5px solid var(--ink);transition:border-color .2s}
+.search:focus-within{border-color:var(--zobo)}
+.search svg{stroke:var(--ink);fill:none;stroke-width:2.2;flex:none}
+.search input{flex:1;min-width:0;height:46px;border:0;background:transparent;outline:0;font-size:17px;font-weight:500}
+.search input::placeholder{color:var(--muted);font-weight:400}
+.filters{display:flex;flex-direction:column;gap:14px}
+.flabel{display:block;font-family:var(--font-display);font-weight:700;font-size:13px;letter-spacing:-.005em;color:var(--muted);margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:6px 8px}
+.chip{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:3px;padding:3px 7px;font-size:14.5px;font-weight:600;color:var(--ink);background-color:transparent;background-image:linear-gradient(var(--mark),var(--mark));background-repeat:no-repeat;background-position:0 92%;background-size:0% 16%;transition:background-size .3s cubic-bezier(.6,0,.2,1),color .2s}
+.chip:hover{background-size:100% 16%}
+.chip[aria-pressed="true"]{background-size:100% 100%;color:var(--mark-ink)}
+.chip:disabled{opacity:.4;cursor:not-allowed}
+.resultbar{display:flex;align-items:baseline;gap:12px;padding-top:2px}
+.count{font-family:var(--font-display);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.regionsel{margin-left:auto;min-width:0}
+.regionsel select{max-width:100%;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:transparent;padding:2px 2px;font-size:14px;font-weight:600}
+.regionsel select option{color:#101857}
+.link{border:0;background:none;color:var(--ink);padding:0;font-weight:700;font-size:14px;text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--zobo);text-decoration-thickness:2px}
+.field{display:flex;flex-direction:column}
+.field select,.field input,.field textarea{padding:8px 0;border:0;border-bottom:2px solid var(--ink);border-radius:0;background:transparent;width:100%;outline:0;font-weight:500}
+.field select option{color:#101857}
+.field input:focus,.field select:focus{border-color:var(--zobo)}
+.btn{color:var(--ink);background:transparent;border:2px solid var(--ink);border-radius:4px;padding:9px 15px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:transform .12s,box-shadow .12s,background-color .2s}
+.btn:hover{background:var(--hover)}
+.btn-primary{background:var(--ink);color:var(--paper);box-shadow:3px 3px 0 var(--zobo)}
+.btn-primary:hover{background:var(--ink);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--zobo)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--zobo)}
+.btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+
+/* school rows */
+.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.row-li{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;border-bottom:1px solid var(--rule);overflow:hidden}
+.row-li::before{content:"";position:absolute;inset:0;background:var(--hover);transform:scaleX(0);transform-origin:left;transition:transform .32s cubic-bezier(.6,0,.2,1)}
+.row-li:hover::before{transform:scaleX(1)}
+.row-li:has(.row.is-sel){background:var(--sel)}
+.row,.star{position:relative;z-index:1}
+.row{display:grid;grid-template-columns:22px minmax(0,1fr);column-gap:8px;align-items:start;width:100%;text-align:left;border:0;background:none;padding:13px 4px 13px 6px}
+.r-glyph{margin-top:5px}
+.r-main{display:flex;flex-direction:column;min-width:0}
+.r-top{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.r-short{font-family:var(--font-display);font-weight:800;font-size:17px;letter-spacing:-.02em}
+.row.is-sel .r-short{text-decoration:underline;text-decoration-color:var(--zobo);text-decoration-thickness:3px;text-underline-offset:4px}
+.r-type{font-size:12.5px;font-weight:600;color:var(--muted)}
+.r-name{font-size:14.5px;overflow-wrap:anywhere}
+.r-loc{font-size:13px;color:var(--muted)}
+.star{border:0;background:none;padding:12px 14px;color:var(--muted);display:grid;place-items:center}
+.star svg{fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .2s}
+.star:hover svg{transform:scale(1.12)}
+.star[aria-pressed="true"]{color:var(--zobo)}
+.star[aria-pressed="true"] svg{fill:var(--zobo)}
+.star.just svg{animation:stamp .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes stamp{0%{transform:scale(.4) rotate(-20deg)}100%{transform:scale(1) rotate(0)}}
+.list.anim .row-li{animation:rowin .45s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(var(--i,0) * 24ms)}
+@keyframes rowin{from{opacity:0;transform:translateX(-14px)}to{opacity:1;transform:none}}
+.empty{color:var(--muted);padding:22px 0;text-align:center}
+
+/* map overlays */
+.legend{position:absolute;z-index:2;right:20px;bottom:22px;background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:4px 4px 0 var(--hard);padding:8px 14px;display:flex;align-items:center;gap:16px;font-size:13px;font-weight:700}
+.legend-row{display:flex;align-items:center;gap:7px}
+.legend small{color:var(--muted);font-size:12px;font-weight:500}
+.zoom{position:absolute;z-index:2;top:20px;right:20px;display:flex;flex-direction:column;background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:4px 4px 0 var(--hard)}
+.zoom button{width:42px;height:42px;border:0;background:transparent;font-size:22px;font-weight:600;line-height:1;display:grid;place-items:center}
+.zoom button:hover{background:var(--hover)}
+.zoom button+button{border-top:2px solid var(--ink)}
+.zoom svg{fill:none;stroke:currentColor;stroke-width:2}
+.osm-tiles{filter:var(--tile-filter)}
+.credit{position:absolute;z-index:2;right:20px;bottom:4px;font-size:11px;color:var(--ink);background:var(--paper);padding:1px 7px;border-radius:3px 3px 0 0;opacity:.92}
+.mapsearch{display:none}
+
+.card{position:absolute;z-index:3;left:calc(440px + 22px);bottom:22px;width:390px;max-width:calc(100% - 440px - 44px);max-height:calc(100% - 44px);overflow:auto;background:var(--paper);border:2px solid var(--ink);border-radius:4px;box-shadow:7px 7px 0 var(--hard)}
+.card.enter{animation:cardin .5s cubic-bezier(.2,.8,.2,1) both}
+@keyframes cardin{from{clip-path:inset(0 0 100% 0);transform:translateY(10px)}to{clip-path:inset(0 0 0 0);transform:none}}
+.card-hero{position:relative;overflow:hidden;display:flex;align-items:flex-start;justify-content:space-between;gap:10px;padding:16px 16px 16px 18px;background:var(--tc);color:var(--label-ink);border-bottom:2px solid var(--ink)}
+.card-hero::after{content:"";position:absolute;right:-18px;bottom:-30px;width:96px;height:96px;background:rgba(13,20,80,.14)}
+.t-fed .card-hero::after{border-radius:50%}
+.t-state .card-hero::after{transform:rotate(45deg)}
+.card-short{position:relative;z-index:1;font-family:var(--font-display);font-weight:800;font-size:36px;letter-spacing:-.035em;line-height:1;overflow-wrap:anywhere}
+.card-x{position:relative;z-index:1;border:2px solid var(--label-ink);background:transparent;color:var(--label-ink);width:32px;height:32px;border-radius:4px;font-size:20px;line-height:1;flex:none}
+.card-x:hover{background:rgba(13,20,80,.14)}
+.card-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:14px}
+.card h2{margin:0;font-size:18px;line-height:1.25;font-weight:700;text-wrap:balance}
+.card-sub{margin:3px 0 0;color:var(--muted);font-size:14px}
+.facts{display:grid;grid-template-columns:auto 1fr;gap:5px 18px;margin:0;font-size:14.5px}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0;min-width:0;font-weight:600}
+.naira{font-weight:800}
+.naira.dim{opacity:.2}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:13px;font-weight:600;border:1.5px solid var(--rule);border-radius:3px;padding:2px 8px}
+.tag.on{background:var(--mark);color:var(--mark-ink);border-color:var(--mark)}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.fine{font-size:12.5px;color:var(--muted);margin:0}
+
+/* advisor */
+.note{font-size:13.5px;color:var(--ink);margin:0;padding:10px 12px;background:var(--hover);border-radius:4px}
+.profile{border:2px solid var(--rule);border-radius:4px}
+.profile>summary{list-style:none;padding:11px 14px;font-family:var(--font-display);font-weight:700;cursor:pointer;display:flex;justify-content:space-between}
+.profile>summary::-webkit-details-marker{display:none}
+.profile>summary::after{content:"+";font-family:var(--font-body);font-weight:600}
+.profile[open]>summary::after{content:"\2212"}
+.profile-body{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;padding:2px 14px 14px}
+.profile-body .wide{grid-column:1/-1}
+.thread{flex:1 1 auto;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:16px;padding:2px 0}
+.msg.me{align-self:flex-end;max-width:88%;background:var(--ink);color:var(--paper);border-radius:4px 4px 0 4px;padding:9px 14px;animation:msgin .3s cubic-bezier(.2,.8,.2,1) both}
+.msg.me p{margin:0}
+.msg.ai{max-width:100%}
+@keyframes msgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.who{font-family:var(--font-display);font-size:12.5px;font-weight:700;color:var(--muted);margin-bottom:4px}
+.body p{margin:0 0 8px}
+.body ul,.body ol{margin:0 0 8px;padding-left:20px}
+.body li{margin-bottom:4px}
+.picks{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.pick{border:2px solid var(--ink);background:transparent;border-radius:4px;padding:3px 10px;font-size:13px;font-weight:700;transition:background-color .2s}
+.pick:hover{background:var(--mark);color:var(--mark-ink);border-color:var(--mark-ink)}
+.pick-all{background:var(--ink);color:var(--paper)}
+.pick-all:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);transform:translate(-1px,-1px)}
+.err{color:var(--zobo)}
+.dots span{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ink);margin-right:5px;animation:blink 1.2s infinite both}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.2;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+.quick{display:flex;flex-wrap:wrap;gap:6px 10px}
+.composer{display:flex;gap:10px;align-items:flex-end}
+.composer textarea{flex:1;min-width:0;resize:none;padding:10px 12px;border:2px solid var(--ink);border-radius:4px;background:transparent;max-height:120px;outline:0}
+.composer textarea:focus{border-color:var(--zobo)}
+.sl-actions{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+@media (max-width:859px){
+  .panel{position:fixed;inset:0;width:auto;max-width:none;padding-right:0;background:transparent;pointer-events:none;overflow:visible}
+  .panel::after{display:none}
+  .panel>*{pointer-events:auto}
+  .app[data-screen="panel"] .panel{background:var(--paper)}
+  .head{display:none}
+  .app[data-screen="panel"] .head{display:flex;padding-top:calc(16px + env(safe-area-inset-top,0px))}
+  .panelbody{display:none}
+  .app[data-screen="panel"] .panelbody{display:flex}
+  .tabs{position:fixed;order:0;left:0;right:0;bottom:0;gap:0;padding:0 0 env(safe-area-inset-bottom,0px);background:var(--bar-bg);border-bottom:0;z-index:6}
+  .tab{flex:1;flex-direction:column;justify-content:center;gap:3px;padding:10px 4px 9px;font-family:var(--font-body);font-size:12px;font-weight:600;color:rgba(241,242,255,.62)}
+  .tab:hover{color:#fff}
+  .tab[aria-selected="true"]{color:#fff}
+  .tab svg{display:block}
+  .tab .n{position:absolute;top:5px;right:calc(50% - 24px);font-size:11px;min-width:17px;line-height:17px}
+  .tab-ind{top:0;bottom:auto;height:4px}
+  .tab-map{display:flex}
+  h1.hello{font-size:34px}
+  .pane{padding:18px 20px calc(88px + env(safe-area-inset-bottom,0px))}
+  .pane-chat{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+  .mapsearch{display:flex;align-items:center;gap:10px;position:absolute;z-index:2;left:14px;right:72px;top:calc(14px + env(safe-area-inset-top,0px));height:46px;padding:0 14px;border:2px solid var(--ink);border-radius:4px;background:var(--paper);color:var(--muted);font-weight:500;box-shadow:4px 4px 0 var(--hard);text-align:left}
+  .mapsearch svg{stroke:var(--ink);fill:none;stroke-width:2.2;flex:none}
+  .zoom{top:calc(14px + env(safe-area-inset-top,0px));right:14px}
+  .zoom button{width:40px;height:40px}
+  .legend{right:auto;left:14px;bottom:auto;top:calc(72px + env(safe-area-inset-top,0px));padding:6px 11px;gap:11px;font-size:12px}
+  .legend small{display:none}
+  .card{left:12px;right:12px;width:auto;max-width:none;bottom:calc(76px + env(safe-area-inset-bottom,0px));max-height:52%}
+  .credit{right:8px;bottom:calc(66px + env(safe-area-inset-bottom,0px));border-radius:3px}
+}
+
+/* ===== CAMPUS COMPASS / PREMIUM EDITION ===== */
+:root{
+ --paper:#f8fafc;--ink:#14243a;--muted:#64748b;--rule:#e4eaf1;--hover:#edf6f3;--sel:#e4f4ed;
+ --mark:#d5f5e6;--mark-ink:#104735;--zobo:#0d9871;--fed:#0da57d;--st:#e8a449;--pv:#8072e9;
+ --label-ink:#10273d;--pinink:#1c3550;--sea:#e4f0f2;--land:#e9eff0;--land-line:#bacfd0;
+ --nga:#fffefa;--shade:#d7e7e8;--river:#badde5;--nga-label:#a7c9c1;--nb-label:#8ba4ad;
+ --strip-bg:#0e2436;--bar-bg:#102c3d;--hard:#a2bdc2;
+ --shadow:0 20px 60px rgba(15,39,54,.13);
+ --font-display:'Syne','Trebuchet MS',system-ui,sans-serif;
+ --font-body:'Schibsted Grotesk','Segoe UI',system-ui,sans-serif;
+}
+:root[data-theme="dark"]{
+ --paper:#111c26;--ink:#eaf6f4;--muted:#a3b8c2;--rule:#304450;--hover:#1b3540;--sel:#1a463e;
+ --mark:#225f4b;--mark-ink:#e4fff1;--zobo:#54d5ad;--fed:#46d5aa;--st:#f4b85d;--pv:#ad9cff;
+ --label-ink:#10273d;--pinink:#183341;--sea:#101f2a;--land:#243541;--land-line:#435965;
+ --nga:#dcece8;--shade:#1b3641;--river:#426d7c;--nga-label:#8bb8af;--nb-label:#879ba6;
+ --strip-bg:#153a43;--bar-bg:#0e2432;--hard:#0b1822;--shadow:0 20px 60px rgba(0,0,0,.3);
+ color-scheme:dark;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --paper:#111c26;--ink:#eaf6f4;--muted:#a3b8c2;--rule:#304450;--hover:#1b3540;--sel:#1a463e;
+ --mark:#225f4b;--mark-ink:#e4fff1;--zobo:#54d5ad;--fed:#46d5aa;--st:#f4b85d;--pv:#ad9cff;
+ --label-ink:#10273d;--pinink:#183341;--sea:#101f2a;--land:#243541;--land-line:#435965;
+ --nga:#dcece8;--shade:#1b3641;--river:#426d7c;--nga-label:#8bb8af;--nb-label:#879ba6;
+ --strip-bg:#153a43;--bar-bg:#0e2432;--hard:#0b1822;--shadow:0 20px 60px rgba(0,0,0,.3);
+ color-scheme:dark;
+}}
+body{font-size:14px;letter-spacing:-.012em}
+.panel{width:454px;padding-right:0;border-right:1px solid var(--rule);box-shadow:12px 0 42px rgba(16,42,57,.055)}
+.panel::after{display:none}
+.head{padding:25px 27px 21px;gap:12px}
+.logo{width:43px;height:43px;border-radius:14px;background:linear-gradient(145deg,#0b826b,#143d50);color:white;box-shadow:0 8px 18px rgba(13,152,113,.2)}
+.brand{font-size:19px;letter-spacing:-.055em}
+.themebtn{border:1px solid var(--rule);border-radius:999px;padding:8px 12px;font-size:11px;background:var(--hover);color:var(--ink)}
+.tabs{gap:23px;padding:0 27px;border-bottom:1px solid var(--rule)}
+.tab{font-family:var(--font-body);font-size:13px;font-weight:700;padding:15px 0;color:var(--muted)}
+.tab-ind{height:3px;border-radius:4px 4px 0 0;background:var(--zobo);bottom:-1px}
+.tab .n{background:var(--zobo);font-size:10px}
+.pane{padding:26px 27px 35px;gap:22px}
+.pane.on{gap:22px}
+h1.hello{font-size:39px;letter-spacing:-.06em;line-height:1.08}
+h1.hello::before{content:'EXPLORE YOUR FUTURE';display:block;font-family:var(--font-body);font-size:10px;line-height:1.4;letter-spacing:.16em;font-weight:800;color:var(--zobo);margin-bottom:13px}
+.hello-sub{font-size:14px;line-height:1.65;margin-top:12px}
+.search{border:1.5px solid var(--rule);border-radius:14px;padding:0 14px;background:var(--paper);box-shadow:0 4px 18px rgba(16,42,57,.035)}
+.search:focus-within{border-color:var(--zobo);box-shadow:0 0 0 4px rgba(13,152,113,.1)}
+.search svg{stroke:var(--zobo)}
+.search input{height:51px;font-size:14px}
+.filters{gap:19px}
+.flabel{font-family:var(--font-body);font-size:11px;letter-spacing:.065em;text-transform:uppercase;font-weight:800;margin-bottom:10px}
+.chips{gap:8px}
+.chip{border:1px solid var(--rule);border-radius:999px;padding:8px 12px;background:transparent;font-size:12px;font-weight:700;transition:background .2s,border-color .2s,transform .2s}
+.chip:hover{background:var(--hover);border-color:var(--zobo);transform:translateY(-1px)}
+.chip[aria-pressed="true"]{background:var(--zobo);border-color:var(--zobo);color:#fff}
+.resultbar{border-top:1px solid var(--rule);padding-top:17px;align-items:center;gap:8px}
+.count{font-size:13px}
+.regionsel select{font-size:12px;border:1px solid var(--rule);border-radius:9px;padding:7px;background:var(--paper)}
+.link{font-size:12px;text-decoration-color:var(--zobo)}
+.list{gap:10px;padding-bottom:16px}
+.row-li{border:1px solid var(--rule);border-radius:15px;background:var(--paper);box-shadow:0 4px 16px rgba(16,42,57,.035);transition:box-shadow .2s,border-color .2s,transform .2s}
+.row-li:hover{border-color:var(--zobo);box-shadow:0 10px 26px rgba(16,42,57,.09);transform:translateY(-2px)}
+.row-li::before{display:none}
+.row-li:has(.row.is-sel){border-color:var(--zobo);background:var(--sel)}
+.row{padding:16px 8px 16px 14px;column-gap:10px}
+.r-short{font-size:16px}
+.r-name{font-size:13px;line-height:1.5;margin-top:4px}
+.r-loc,.r-type{font-size:11px}
+.star{padding:14px}
+.legend{border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);padding:12px 16px;gap:15px;background:var(--paper)}
+.zoom{border:1px solid var(--rule);border-radius:14px;overflow:hidden;box-shadow:var(--shadow)}
+.zoom button+button{border-top:1px solid var(--rule)}
+.zoom button{width:44px;height:44px}
+.card{left:calc(454px + 25px);bottom:25px;width:400px;max-width:calc(100% - 504px);border:1px solid var(--rule);border-radius:20px;box-shadow:0 24px 65px rgba(13,37,52,.22);overflow:auto}
+.card-hero{padding:23px 23px 22px;border-bottom:0}
+.card-short{font-size:34px}
+.card-x{border:0;border-radius:50%;background:rgba(255,255,255,.45);width:34px;height:34px}
+.card-body{padding:22px 23px 24px;gap:18px}
+.card h2{font-size:19px}
+.tag{border:1px solid var(--rule);border-radius:999px;padding:5px 10px;font-size:11px}
+.tag.on{background:var(--mark);color:var(--mark-ink);border-color:transparent}
+.btn{border:1px solid var(--rule);border-radius:11px;padding:11px 16px;font-size:13px;box-shadow:none}
+.btn-primary{background:var(--zobo);color:white;border-color:var(--zobo);box-shadow:0 5px 16px rgba(13,152,113,.18)}
+.btn-primary:hover{background:var(--zobo);box-shadow:0 9px 24px rgba(13,152,113,.25)}
+.note{border-radius:12px;padding:14px;line-height:1.6}
+.profile{border:1px solid var(--rule);border-radius:14px;overflow:hidden}
+.profile>summary{padding:15px 16px;font-size:14px}
+.profile-body{padding:8px 16px 18px}
+.field select,.field input,.field textarea{border:1px solid var(--rule);border-radius:10px;padding:11px 12px;background:var(--paper)}
+.msg.me{border-radius:15px 15px 4px 15px;background:var(--zobo);color:white;padding:12px 16px}
+.pick{border:1px solid var(--rule);border-radius:999px;padding:8px 12px;font-size:12px}
+.pick-all{background:var(--zobo);border-color:var(--zobo);color:white}
+.composer textarea{border:1px solid var(--rule);border-radius:13px;padding:13px;background:var(--paper)}
+.composer textarea:focus{border-color:var(--zobo)}
+.mapsearch{border-radius:13px;border:1px solid var(--rule);box-shadow:var(--shadow)}
+@media(max-width:859px){
+ .panel{width:auto;border:0;box-shadow:none}
+ .head{padding:19px 21px 17px}
+ .tabs{padding:0 4px env(safe-area-inset-bottom,0px);gap:0;border:0;border-radius:18px 18px 0 0;box-shadow:0 -8px 30px rgba(0,0,0,.12)}
+ .tab{padding:12px 4px 10px;font-size:11px}
+ .tab-ind{top:0;bottom:auto}
+ .pane{padding:23px 19px calc(96px + env(safe-area-inset-bottom,0px))}
+ .pane-chat{padding-bottom:calc(95px + env(safe-area-inset-bottom,0px))}
+ h1.hello{font-size:35px}
+ .mapsearch{left:12px;right:69px;height:48px}
+ .zoom{right:12px}
+ .zoom button{width:40px;height:40px}
+ .legend{left:12px;top:calc(75px + env(safe-area-inset-top,0px));padding:9px 11px;gap:10px;font-size:11px}
+ .card{left:12px;right:12px;bottom:calc(80px + env(safe-area-inset-bottom,0px));max-width:none;width:auto;max-height:55%;border-radius:18px}
+}
+@media(max-width:360px){.chip{padding:7px 10px;font-size:11px}.resultbar{flex-wrap:wrap}.legend{gap:7px;font-size:10px}}
+
+
+/* Premium satellite map controls */
+.mapwrap{background:#0b2230}
+.sea{opacity:0;pointer-events:none}
+.satellite-tiles{filter:saturate(1.16) contrast(1.06) brightness(.94)}
+.map-mode{position:absolute;z-index:3;top:20px;right:88px;display:flex;gap:4px;padding:5px;border:1px solid rgba(255,255,255,.25);border-radius:16px;background:rgba(10,24,37,.88);box-shadow:0 12px 32px rgba(0,0,0,.25);backdrop-filter:blur(16px)}
+.map-mode button{border:0;border-radius:11px;background:transparent;color:#cbd5e1;padding:10px 14px;font-weight:750;font-size:12px;transition:background .2s,color .2s}
+.map-mode button.active{background:#f8fafc;color:#0b2333;box-shadow:0 2px 9px rgba(0,0,0,.2)}
+.map-mode button:hover:not(.active){background:rgba(255,255,255,.12);color:white}
+.legend{background:rgba(9,24,36,.89);border:1px solid rgba(255,255,255,.18);color:#fff;box-shadow:0 12px 30px rgba(0,0,0,.23);backdrop-filter:blur(14px)}
+.legend small{color:#cbd5e1}
+.credit{background:rgba(10,24,37,.76);color:#e2e8f0;backdrop-filter:blur(8px);font-size:10px}
+@media(max-width:859px){.map-mode{top:calc(76px + env(safe-area-inset-top,0px));right:14px}.map-mode button{padding:8px 10px;font-size:11px}.legend{top:calc(132px + env(safe-area-inset-top,0px));left:14px;right:auto;max-width:calc(100% - 28px);gap:9px;font-size:11px}.legend-row{gap:4px}.credit{bottom:calc(67px + env(safe-area-inset-bottom,0px))}}
+
+/* Immersive full-screen advisor workspace */
+@media (min-width:860px){
+ .app[data-active-tab="advisor"] .panel{width:100%;max-width:none;border-right:0;box-shadow:none;z-index:8}
+ .app[data-active-tab="advisor"] .head{padding-left:max(32px,calc((100vw - 1180px)/2));padding-right:max(32px,calc((100vw - 1180px)/2))}
+ .app[data-active-tab="advisor"] .tabs{padding-left:max(32px,calc((100vw - 1180px)/2));padding-right:max(32px,calc((100vw - 1180px)/2))}
+ .app[data-active-tab="advisor"] .panelbody{width:100%;min-height:0}
+ .app[data-active-tab="advisor"] #pane-advisor{width:100%;max-width:1120px;margin:0 auto;padding:28px 34px 30px;gap:16px;min-height:0}
+ .app[data-active-tab="advisor"] .thread{padding:14px 4px 20px;gap:22px}
+ .app[data-active-tab="advisor"] .msg.ai{max-width:min(84%,800px)}
+ .app[data-active-tab="advisor"] .msg.me{max-width:min(75%,650px)}
+ .app[data-active-tab="advisor"] .composer{width:100%;padding-top:16px;border-top:1px solid var(--rule)}
+ .app[data-active-tab="advisor"] .composer textarea{min-height:64px;max-height:180px}
+ .app[data-active-tab="advisor"] .quick{gap:10px}
+}
+@media (max-width:859px){
+ .app[data-active-tab="advisor"][data-screen="panel"] #pane-advisor{padding-top:20px;gap:14px}
+ .app[data-active-tab="advisor"] .thread{flex:1 1 auto;min-height:0}
+ .app[data-active-tab="advisor"] .composer textarea{min-height:54px}
+}
+
+/* Conversation-first advisor: maximize readable chat space */
+.app[data-active-tab="advisor"] #pane-advisor{gap:8px!important;padding-top:12px!important;padding-bottom:12px!important}
+.app[data-active-tab="advisor"] .profile{flex:0 0 auto;border:1px solid var(--rule);border-radius:12px}
+.app[data-active-tab="advisor"] .profile>summary{padding:8px 12px;font-size:12px}
+.app[data-active-tab="advisor"] #aiNote{font-size:11px;padding:6px 10px;margin:0;line-height:1.3}
+.app[data-active-tab="advisor"] .thread{flex:1 1 auto;min-height:0;padding:6px 3px 10px!important;gap:12px!important;overscroll-behavior:contain}
+.app[data-active-tab="advisor"] .msg.ai{max-width:100%!important;padding:12px 16px}
+.app[data-active-tab="advisor"] .msg.me{max-width:85%!important}
+.app[data-active-tab="advisor"] .msg.ai .body p{line-height:1.5;margin-bottom:7px}
+.app[data-active-tab="advisor"] .quick{flex:0 0 auto;display:flex;flex-wrap:nowrap;overflow-x:auto;gap:7px!important;padding:3px 0 5px;scrollbar-width:thin}
+.app[data-active-tab="advisor"] .quick button{white-space:nowrap;flex:0 0 auto;padding:6px 10px!important}
+.app[data-active-tab="advisor"] .composer{flex:0 0 auto;padding-top:8px!important}
+.app[data-active-tab="advisor"] .composer textarea{min-height:42px!important;max-height:100px!important;padding:10px 12px}
+@media(max-width:859px){
+ .app[data-active-tab="advisor"] #pane-advisor{padding:8px 12px calc(70px + env(safe-area-inset-bottom,0px))!important;gap:6px!important}
+ .app[data-active-tab="advisor"] .msg.ai{padding:10px 12px;font-size:14px}
+ .app[data-active-tab="advisor"] .thread{gap:10px!important}
+ .app[data-active-tab="advisor"] .profile>summary{padding:6px 10px}
+ .app[data-active-tab="advisor"] .quick button{font-size:11px!important}
+ .app[data-active-tab="advisor"] .composer textarea{min-height:40px!important}
+}
+</style>
+</head><body>
+
+<div class="app" id="app" data-screen="map">
+  <main class="mapwrap" id="mapwrap">
+    <div class="sea" aria-hidden="true"></div>
+    <div id="map" role="application" aria-label="World map of universities"></div>
+    <button class="mapsearch" type="button" data-go="explore">
+      <svg width="18" height="18" viewBox="0 0 24 24" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      Search schools
+    </button>
+    <div class="legend" aria-label="Legend">
+      <span class="legend-row t-fed"><span class="glyph"></span>Federal</span>
+      <span class="legend-row t-state"><span class="glyph"></span>State</span>
+      <span class="legend-row t-priv"><span class="glyph"></span>Private</span>
+      <small>Explore Nigeria</small>
+    </div>
+    <div class="map-mode" role="group" aria-label="Map appearance"><button type="button" id="satMode" class="active" aria-pressed="true">◉ Satellite</button><button type="button" id="atlasMode" aria-pressed="false">◇ Atlas</button></div>
+    <div class="zoom">
+      <button id="zIn" type="button" aria-label="Zoom in">+</button>
+      <button id="zOut" type="button" aria-label="Zoom out">&minus;</button>
+      <button id="zHome" type="button" aria-label="Show the world"><svg width="18" height="18" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
+    <div class="credit" id="credit">Imagery © Esri, Maxar, Earthstar Geographics and contributors</div>
+    <article class="card" id="card" hidden></article>
+  </main>
+
+  <aside class="panel">
+    <header class="head">
+      <span class="logo"><svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" fill="none" stroke="currentColor" stroke-width="2"/><g class="needle"><path d="M12 4.5 15 12 12 19.5 9 12Z" fill="#e8305f"/></g></svg></span>
+      <span class="brand">Campus Compass</span>
+      <button class="themebtn" id="themeBtn" type="button" aria-label="Change colour theme"></button>
+    </header>
+
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button class="tab tab-map" role="tab" data-go="map" aria-selected="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6v14l6-2 6 2 6-2V4l-6 2-6-2Z"/><path d="M9 4v14M15 6v14"/></svg>Map
+      </button>
+      <button class="tab" role="tab" data-go="explore" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></svg>Explore
+      </button>
+      <button class="tab" role="tab" data-go="advisor" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z"/><path d="M19 16l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7.7-2Z"/></svg>Advisor
+      </button>
+      <button class="tab" role="tab" data-go="shortlist" aria-selected="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg>Shortlist <span class="n" id="slCount">0</span>
+      </button>
+      <span class="tab-ind" id="tabInd" aria-hidden="true"></span>
+    </nav>
+
+    <div class="panelbody">
+      <section class="pane on" id="pane-explore" aria-label="Explore schools">
+        <div>
+          <h1 class="hello">Find your school</h1>
+          <p class="hello-sub" id="brandSub"></p>
+        </div>
+        <label class="search">
+          <svg width="20" height="20" viewBox="0 0 24 24" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span class="sr">Search schools</span>
+          <input id="q" type="search" placeholder="Search university, city or country" autocomplete="off">
+        </label>
+        <div class="filters" id="filters">
+          <div><span class="flabel">Ownership</span><div class="chips" id="fTypes"></div></div>
+          <div><span class="flabel">Course area</span><div class="chips" id="fAreas"></div></div>
+        </div>
+        <div class="resultbar">
+          <span class="count" id="count"></span>
+          <label class="regionsel"><span class="sr">Region</span><select id="fZone"></select></label>
+          <button class="link" id="reset" type="button">Reset</button>
+        </div>
+        <ul class="list" id="list"></ul>
+      </section>
+
+      <section class="pane pane-chat" id="pane-advisor" aria-label="Advisor">
+        <p class="note" id="aiNote" hidden></p>
+        <details class="profile" id="profileBox">
+          <summary>Your profile</summary>
+          <div class="profile-body">
+            <label class="field wide"><span class="flabel">Course you want</span><input id="pCourse" type="text" placeholder="e.g. Computer Engineering" autocomplete="off"></label>
+            <label class="field"><span class="flabel">JAMB score (of 400)</span><input id="pJamb" type="number" min="0" max="400" inputmode="numeric" placeholder="e.g. 245"></label>
+            <label class="field"><span class="flabel">Budget</span>
+              <select id="pBudget"><option value="">No preference</option><option value="public">Public schools only</option><option value="any">Private is fine</option></select>
+            </label>
+          </div>
+        </details>
+        <div class="thread" id="thread" aria-live="polite"></div>
+        <div class="quick" id="quick"></div>
+        <form class="composer" id="composer">
+          <textarea id="ask" rows="2" placeholder="Ask about campus life, classes, friends or admissions…" aria-label="Ask the advisor"></textarea>
+          <button class="btn btn-primary" id="send" type="submit">Send</button>
+        </form>
+      </section>
+
+      <section class="pane" id="pane-shortlist" aria-label="Shortlist">
+        <div id="slBody"></div>
+      </section>
+    </div>
+  </aside>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/ol@9.2.4/dist/ol.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+(function(){
+'use strict';
+
+/* ---------- data ---------- */
+var AREAS={eng:'Engineering',med:'Medicine & Health',law:'Law',bus:'Business',sci:'Sciences',agr:'Agriculture',art:'Arts & Social Sciences'};
+var ZONES={NW:'Nigeria · North-West',NE:'Nigeria · North-East',NC:'Nigeria · North-Central',SW:'Nigeria · South-West',SE:'Nigeria · South-East',SS:'Nigeria · South-South',AF:'Africa (other)',EU:'Europe',AS:'Asia',NA:'North America',SA:'South America',OC:'Oceania'};
+var TYPES={fed:'Federal',state:'State',priv:'Private'};
+var COST={fed:1,state:2,priv:3};
+
+var SCHOOLS=[];
+function S(id,short,name,city,state,zone,type,year,lat,lon,areas){
+  SCHOOLS.push({id:id,short:short,name:name,city:city,state:state,zone:zone,type:type,year:year,lat:lat,lon:lon,areas:areas.split(' ')});
+}
+S('unilag','UNILAG','University of Lagos','Akoka','Lagos','SW','fed',1962,6.5158,3.3986,'eng med law bus sci art');
+S('ui','UI','University of Ibadan','Ibadan','Oyo','SW','fed',1948,7.4443,3.9003,'med sci agr law art eng');
+S('oau','OAU','Obafemi Awolowo University','Ile-Ife','Osun','SW','fed',1962,7.5183,4.5270,'med eng law sci agr art bus');
+S('unn','UNN','University of Nigeria, Nsukka','Nsukka','Enugu','SE','fed',1960,6.8567,7.3958,'eng med law sci agr art bus');
+S('abu','ABU','Ahmadu Bello University','Zaria','Kaduna','NW','fed',1962,11.1514,7.6486,'eng med law sci agr art bus');
+S('uniben','UNIBEN','University of Benin','Benin City','Edo','SS','fed',1970,6.4003,5.6139,'eng med law sci agr art bus');
+S('unilorin','UNILORIN','University of Ilorin','Ilorin','Kwara','NC','fed',1975,8.4799,4.6689,'med eng law sci agr art bus');
+S('futa','FUTA','Federal University of Technology, Akure','Akure','Ondo','SW','fed',1981,7.3040,5.1378,'eng sci agr');
+S('uniport','UNIPORT','University of Port Harcourt','Choba, Port Harcourt','Rivers','SS','fed',1975,4.9060,6.9220,'eng med law sci agr art bus');
+S('buk','BUK','Bayero University Kano','Kano','Kano','NW','fed',1975,11.9709,8.4743,'med law sci agr art eng bus');
+S('uniabuja','UniAbuja','University of Abuja','Gwagwalada','FCT','NC','fed',1988,8.9433,7.0847,'med law sci agr art eng bus');
+S('futminna','FUTMinna','Federal University of Technology, Minna','Minna','Niger','NC','fed',1983,9.5836,6.4616,'eng sci agr');
+S('fupre','FUPRE','Federal University of Petroleum Resources','Effurun','Delta','SS','fed',2007,5.5600,5.7700,'eng sci');
+S('delsu','DELSU','Delta State University','Abraka','Delta','SS','state',1992,5.7918,6.1002,'med law sci agr art eng bus');
+S('unical','UNICAL','University of Calabar','Calabar','Cross River','SS','fed',1975,4.9500,8.3400,'med law sci agr art eng bus');
+S('unijos','UNIJOS','University of Jos','Jos','Plateau','NC','fed',1975,9.9478,8.8815,'med law sci agr art eng bus');
+S('unimaid','UNIMAID','University of Maiduguri','Maiduguri','Borno','NE','fed',1975,11.8469,13.0897,'med law sci agr art eng bus');
+S('udus','UDUS','Usmanu Danfodiyo University','Sokoto','Sokoto','NW','fed',1975,13.0289,5.2144,'med law sci agr art eng bus');
+S('unizik','UNIZIK','Nnamdi Azikiwe University','Awka','Anambra','SE','fed',1992,6.2440,7.1170,'med law sci agr art eng bus');
+S('funaab','FUNAAB','Federal University of Agriculture, Abeokuta','Abeokuta','Ogun','SW','fed',1988,7.2290,3.4510,'agr sci eng');
+S('uniuyo','UNIUYO','University of Uyo','Uyo','Akwa Ibom','SS','fed',1991,5.0402,7.9407,'med law sci agr art eng bus');
+S('futo','FUTO','Federal University of Technology, Owerri','Owerri','Imo','SE','fed',1980,5.3811,6.9984,'eng sci agr');
+S('lasu','LASU','Lagos State University','Ojo','Lagos','SW','state',1983,6.4666,3.2000,'med law sci agr art eng bus');
+S('rsu','RSU','Rivers State University','Port Harcourt','Rivers','SS','state',1979,4.8000,6.9800,'eng med law sci agr art bus');
+S('lautech','LAUTECH','Ladoke Akintola University of Technology','Ogbomoso','Oyo','SW','state',1990,8.1630,4.2670,'eng med sci agr bus');
+S('aau','AAU','Ambrose Alli University','Ekpoma','Edo','SS','state',1981,6.7400,6.1300,'med law sci agr art eng bus');
+S('oou','OOU','Olabisi Onabanjo University','Ago-Iwoye','Ogun','SW','state',1982,6.9420,3.9100,'med law sci agr art eng bus');
+S('covenant','Covenant','Covenant University','Ota','Ogun','SW','priv',2002,6.6737,3.1590,'eng bus sci law art');
+S('babcock','Babcock','Babcock University','Ilishan-Remo','Ogun','SW','priv',1999,6.8939,3.7197,'med law bus sci art eng');
+S('abuad','ABUAD','Afe Babalola University','Ado-Ekiti','Ekiti','SW','priv',2009,7.6410,5.2560,'med law eng sci bus art');
+S('bells','Bells','Bells University of Technology','Ota','Ogun','SW','priv',2005,6.6819,3.2314,'eng sci bus');
+S('landmark','Landmark','Landmark University','Omu-Aran','Kwara','NC','priv',2011,8.1400,5.1000,'agr eng sci bus art');
+S('pau','PAU','Pan-Atlantic University','Lekki','Lagos','SW','priv',2002,6.4680,3.9740,'bus art sci');
+S('aun','AUN','American University of Nigeria','Yola','Adamawa','NE','priv',2003,9.2800,12.4400,'eng sci bus law art');
+S('nile','Nile','Nile University of Nigeria','Abuja','FCT','NC','priv',2009,9.0123,7.4250,'eng law bus sci art');
+S('redeemers','Redeemer’s','Redeemer’s University','Ede','Osun','SW','priv',2005,7.6900,4.4600,'sci bus law art med');
+S('igbinedion','Igbinedion','Igbinedion University','Okada','Edo','SS','priv',1999,6.7500,5.3900,'med law bus sci art');
+S('bowen','Bowen','Bowen University','Iwo','Osun','SW','priv',2001,7.6330,4.1830,'med law bus sci art eng');
+/* Global campus additions: curated starter selection, not an exhaustive directory. */
+S('harvard','Harvard','Harvard University','Cambridge','United States','NA','priv',1636,42.377,-71.116,'med law bus sci art eng');
+S('mit','MIT','Massachusetts Institute of Technology','Cambridge','United States','NA','priv',1861,42.3601,-71.0942,'eng sci bus art');
+S('stanford','Stanford','Stanford University','Stanford','United States','NA','priv',1885,37.4275,-122.1697,'eng med law bus sci art');
+S('berkeley','UC Berkeley','University of California, Berkeley','Berkeley','United States','NA','state',1868,37.8719,-122.2585,'eng law bus sci art');
+S('princeton','Princeton','Princeton University','Princeton','United States','NA','priv',1746,40.3431,-74.6551,'eng sci art bus');
+S('toronto','U of T','University of Toronto','Toronto','Canada','NA','state',1827,43.6629,-79.3957,'eng med law bus sci art');
+S('mcgill','McGill','McGill University','Montreal','Canada','NA','state',1821,45.5048,-73.5772,'eng med law bus sci art');
+S('ubc','UBC','University of British Columbia','Vancouver','Canada','NA','state',1908,49.2606,-123.246,'eng med law bus sci art');
+S('oxford','Oxford','University of Oxford','Oxford','United Kingdom','EU','state',1096,51.7548,-1.2544,'med law bus sci art eng');
+S('cambridge','Cambridge','University of Cambridge','Cambridge','United Kingdom','EU','state',1209,52.2043,0.1149,'eng med law bus sci art');
+S('imperial','Imperial','Imperial College London','London','United Kingdom','EU','state',1907,51.4988,-0.1749,'eng med sci bus');
+S('ucl','UCL','University College London','London','United Kingdom','EU','state',1826,51.5246,-0.134,'eng med law bus sci art');
+S('eth','ETH Zürich','ETH Zurich','Zurich','Switzerland','EU','fed',1855,47.3763,8.548,'eng sci agr');
+S('sorbonne','Sorbonne','Sorbonne University','Paris','France','EU','state',2018,48.847,2.356,'med sci art');
+S('tum','TUM','Technical University of Munich','Munich','Germany','EU','state',1868,48.1497,11.5679,'eng med sci bus');
+S('uct','UCT','University of Cape Town','Cape Town','South Africa','AF','state',1829,-33.9577,18.4612,'eng med law bus sci art');
+S('wits','Wits','University of the Witwatersrand','Johannesburg','South Africa','AF','state',1896,-26.1929,28.0305,'eng med law bus sci art');
+S('makerere','Makerere','Makerere University','Kampala','Uganda','AF','state',1922,0.3356,32.5686,'eng med law bus sci agr art');
+S('ughana','UG','University of Ghana','Accra','Ghana','AF','state',1948,5.6506,-0.187,'eng med law bus sci agr art');
+S('uon','UoN','University of Nairobi','Nairobi','Kenya','AF','state',1970,-1.2797,36.8162,'eng med law bus sci agr art');
+S('nus','NUS','National University of Singapore','Singapore','Singapore','AS','state',1905,1.2966,103.7764,'eng med law bus sci art');
+S('ntu','NTU','Nanyang Technological University','Singapore','Singapore','AS','state',1991,1.3483,103.6831,'eng med bus sci art');
+S('tokyo','UTokyo','University of Tokyo','Tokyo','Japan','AS','state',1877,35.7126,139.762,'eng med law bus sci agr art');
+S('kyoto','Kyoto','Kyoto University','Kyoto','Japan','AS','state',1897,35.0262,135.7808,'eng med law sci agr art');
+S('tsinghua','Tsinghua','Tsinghua University','Beijing','China','AS','state',1911,40.0,116.326,'eng med law bus sci art');
+S('pku','Peking','Peking University','Beijing','China','AS','state',1898,39.9928,116.3055,'eng med law bus sci art');
+S('iitb','IIT Bombay','Indian Institute of Technology Bombay','Mumbai','India','AS','fed',1958,19.1334,72.9133,'eng sci bus');
+S('melbourne','Melbourne','University of Melbourne','Melbourne','Australia','OC','state',1853,-37.7963,144.9614,'eng med law bus sci art');
+S('anu','ANU','Australian National University','Canberra','Australia','OC','state',1946,-35.2777,149.1185,'eng med law bus sci art');
+S('sydney','Sydney','University of Sydney','Sydney','Australia','OC','state',1850,-33.8886,151.1873,'eng med law bus sci art');
+S('usp','USP','University of São Paulo','São Paulo','Brazil','SA','state',1934,-23.5595,-46.7317,'eng med law bus sci agr art');
+S('unam','UNAM','National Autonomous University of Mexico','Mexico City','Mexico','NA','state',1910,19.332,-99.187,'eng med law bus sci art');
+S('uba','UBA','University of Buenos Aires','Buenos Aires','Argentina','SA','state',1821,-34.5997,-58.373,'eng med law bus sci agr art');
+S('uchile','UChile','University of Chile','Santiago','Chile','SA','state',1842,-33.444,-70.651,'eng med law bus sci agr art');
+SCHOOLS.forEach(function(s){ if(!s.country) s.country='Nigeria'; });
+var byId={}; SCHOOLS.forEach(function(s){byId[s.id]=s;});
+
+/* ---------- helpers ---------- */
+function $(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function inl(s){return esc(s).replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\*([^*\s][^*]*)\*/g,'<em>$1</em>');}
+function md(t){
+  var out=[],list=null,ordered=false;
+  function flush(){ if(list){ out.push((ordered?'<ol>':'<ul>')+list.join('')+(ordered?'</ol>':'</ul>')); list=null; } }
+  String(t).split('\n').forEach(function(raw){
+    var line=raw.trim(),m;
+    if(!line){flush();return;}
+    if((m=line.match(/^[-*•]\s+(.*)$/))){ if(!list||ordered){flush();list=[];ordered=false;} list.push('<li>'+inl(m[1])+'</li>'); return; }
+    if((m=line.match(/^\d+[.)]\s+(.*)$/))){ if(!list||!ordered){flush();list=[];ordered=true;} list.push('<li>'+inl(m[1])+'</li>'); return; }
+    flush();
+    if((m=line.match(/^#{1,4}\s+(.*)$/))){ out.push('<p><strong>'+inl(m[1])+'</strong></p>'); return; }
+    out.push('<p>'+inl(line)+'</p>');
+  });
+  flush(); return out.join('');
+}
+function store(k,v){ try{ if(v===undefined){ var r=localStorage.getItem(k); return r?JSON.parse(r):null; } localStorage.setItem(k,JSON.stringify(v)); }catch(e){ return null; } }
+function naira(n){ return new Array(n+1).join('₦'); }
+
+/* ---------- state ---------- */
+var st={q:'',types:new Set(),areas:new Set(),zone:'',selected:null,highlight:new Set(),tab:'explore',screen:'map'};
+var shortlist=(store('cc-shortlist')||[]).filter(function(id){return byId[id];});
+var narrow=window.matchMedia('(max-width: 859px)');
+
+function matches(s){
+  if(st.types.size && !st.types.has(s.type)) return false;
+  if(st.zone && s.zone!==st.zone) return false;
+  var ok=true; st.areas.forEach(function(a){ if(s.areas.indexOf(a)<0) ok=false; });
+  if(!ok) return false;
+  if(st.q){
+    var hay=(s.name+' '+s.short+' '+s.city+' '+s.state+' '+s.country).toLowerCase();
+    if(hay.indexOf(st.q)<0) return false;
+  }
+  return true;
+}
+function visible(){ return SCHOOLS.filter(matches); }
+
+/* ---------- map ---------- */
+var map=null, view=null, clusterSource=null, schoolLayer=null, tileLayer=null, satelliteLayer=null, atlasLayers=[], mapMode="satellite", T={}, cache={};
+var NGA=[[2.70,6.38],[2.72,6.65],[2.74,7.15],[2.70,7.60],[2.78,8.00],[3.14,8.70],[3.58,9.15],[3.72,9.88],[3.85,10.25],[3.70,10.80],[3.60,11.69],[3.95,12.20],[4.20,12.60],[4.10,13.10],[4.70,13.65],[5.30,13.80],[6.20,13.60],[7.20,13.40],[8.20,13.30],[9.20,13.25],[10.20,13.30],[11.20,13.40],[12.40,13.40],[13.60,13.65],[14.20,13.10],[14.60,12.50],[14.65,11.80],[14.00,11.30],[13.70,10.70],[13.70,10.00],[13.40,9.50],[13.00,9.00],[12.90,8.50],[12.40,8.10],[12.00,7.60],[11.60,7.00],[11.30,6.65],[10.40,6.95],[9.80,6.80],[9.40,6.40],[9.20,6.00],[9.05,5.60],[8.85,5.10],[8.60,4.75],[8.50,4.55],[8.20,4.40],[7.60,4.35],[7.10,4.40],[6.60,4.30],[6.20,4.30],[5.80,4.50],[5.45,5.00],[5.35,5.40],[5.10,5.65],[4.80,5.85],[4.40,6.05],[4.00,6.30],[3.40,6.40]];
+var AROUND=[[-3,4.8],[-2,4.8],[-1,5.1],[0,5.7],[1.2,6.1],[2.7,6.38],[3.4,6.4],[4.0,6.3],[4.4,6.05],[4.8,5.85],[5.1,5.65],[5.35,5.4],[5.45,5.0],[5.8,4.5],[6.2,4.3],[6.6,4.3],[7.1,4.4],[7.6,4.35],[8.2,4.4],[8.5,4.55],[8.85,4.45],[9.2,4.1],[9.6,3.9],[9.9,3.5],[9.8,3.0],[10.0,2.6],[10.5,2.2],[11.0,2.0],[17.5,2.0],[17.5,16.5],[-3,16.5]];
+var LAKE=[[13.3,13.5],[13.9,13.8],[14.4,13.3],[14.2,12.8],[13.6,12.9]];
+var NIGER=[[3.6,11.85],[4.5,10.7],[4.55,10.0],[4.8,9.15],[5.6,8.9],[6.4,8.5],[6.75,7.8],[6.6,7.0],[6.78,6.15],[6.4,5.7],[6.1,5.2]];
+var BENUE=[[13.0,9.35],[12.45,9.25],[11.7,9.4],[11.0,9.2],[10.0,8.9],[9.4,8.4],[8.5,7.75],[7.8,7.9],[7.1,7.85],[6.75,7.8]];
+var LABELS=[['NIGERIA',8.4,9.9,'nga'],['BENIN',1.7,9.0,'nb'],['NIGER',7.5,14.8,'nb'],['CHAD',16.2,13.2,'nb'],['CAMEROON',12.6,5.4,'nb'],['Gulf of Guinea',5.6,3.2,'sea'],['Lake Chad',14.3,13.5,'sea']];
+
+function readTheme(){
+  var cs=getComputedStyle(document.documentElement);
+  function g(n){return cs.getPropertyValue(n).trim();}
+  T={fed:g('--fed'),state:g('--st'),priv:g('--pv'),zobo:g('--zobo'),labelInk:g('--label-ink'),pinink:g('--pinink'),
+     land:g('--land'),landLine:g('--land-line'),nga:g('--nga'),shade:g('--shade'),river:g('--river'),
+     ngaLabel:g('--nga-label'),nbLabel:g('--nb-label'),sea:g('--sea'),dark:g('--is-dark')==='1'};
+  cache={};
+}
+var RM=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+var appearAt={}, animUntil=0, prevVis={};
+function easeBack(x){var c1=1.70158,c3=c1+1;return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2);}
+function pinScale(id){
+  var t=appearAt[id]; if(t===undefined||RM) return 1;
+  var p=(Date.now()-t)/420; if(p<=0) return 0; if(p>=1) return 1; return easeBack(p);
+}
+function hexA(hex,a){
+  var h=String(hex).replace('#',''); if(h.length===3) h=h.replace(/./g,'$&$&');
+  var n=parseInt(h,16); return 'rgba('+((n>>16)&255)+','+((n>>8)&255)+','+(n&255)+','+a+')';
+}
+function polyFeature(coords,props){ return {type:'Feature',properties:props,geometry:{type:'Polygon',coordinates:[coords.concat([coords[0]])]}}; }
+function lineFeature(coords,props){ return {type:'Feature',properties:props,geometry:{type:'LineString',coordinates:coords}}; }
+function pointFeature(c,props){ return {type:'Feature',properties:props,geometry:{type:'Point',coordinates:c}}; }
+
+function baseStyle(feature){
+  var k=feature.get('kind');
+  if(cache[k]) return cache[k];
+  var s;
+  if(k==='around') s=new ol.style.Style({fill:new ol.style.Fill({color:T.land}),stroke:new ol.style.Stroke({color:T.landLine,width:1.5})});
+  else if(k==='shade') s=new ol.style.Style({fill:new ol.style.Fill({color:T.shade})});
+  else if(k==='nga') s=new ol.style.Style({fill:new ol.style.Fill({color:T.nga}),stroke:new ol.style.Stroke({color:T.pinink,width:2.5,lineJoin:'round'})});
+  else if(k==='lake') s=new ol.style.Style({fill:new ol.style.Fill({color:T.sea}),stroke:new ol.style.Stroke({color:T.river,width:1.5})});
+  else if(k==='river') s=new ol.style.Style({stroke:new ol.style.Stroke({color:T.river,width:2.5,lineCap:'round'})});
+  cache[k]=s; return s;
+}
+function labelStyle(feature){
+  var k=feature.get('kind'), key='L'+k+feature.get('name');
+  if(cache[key]) return cache[key];
+  var font=k==='nga'?"800 34px Syne,'Trebuchet MS',sans-serif":k==='sea'?"italic 500 12px 'Schibsted Grotesk',sans-serif":"700 11px 'Schibsted Grotesk',sans-serif";
+  var s=new ol.style.Style({text:new ol.style.Text({text:feature.get('name'),font:font,fill:new ol.style.Fill({color:k==='nga'?T.ngaLabel:T.nbLabel}),overflow:true})});
+  cache[key]=s; return s;
+}
+function clusterStyle(n){
+  var key='C'+n; if(cache[key]) return cache[key];
+  var s=new ol.style.Style({image:new ol.style.Circle({radius:17,fill:new ol.style.Fill({color:T.pinink}),stroke:new ol.style.Stroke({color:'#ffffff',width:3})}),
+    text:new ol.style.Text({text:String(n),font:"800 13px Syne,'Trebuchet MS',sans-serif",fill:new ol.style.Fill({color:'#ffffff'})}),zIndex:5});
+  cache[key]=s; return s;
+}
+function glyphImage(type,r,fill,stroke,sw){
+  var f=new ol.style.Fill({color:fill}), s=new ol.style.Stroke({color:stroke,width:sw});
+  if(type==='fed') return new ol.style.Circle({radius:r,fill:f,stroke:s});
+  if(type==='state') return new ol.style.RegularShape({points:4,radius:r*1.35,fill:f,stroke:s});
+  return new ol.style.RegularShape({points:4,radius:r*1.2,angle:Math.PI/4,fill:f,stroke:s});
+}
+function schoolStyle(feature,resolution){
+  var members=feature.get('features'), n=members.length;
+  if(n>1) return clusterStyle(n);
+  var id=members[0].getId(), s=byId[id];
+  var sc=pinScale(id); if(sc<=0.03) return null;
+  var q=Math.round(sc*10);
+  var sel=st.selected===id, hi=st.highlight.has(id);
+  var pulseOn=(sel||hi)&&!RM;
+  var ph=pulseOn?Math.floor(((Date.now()%1700)/1700)*17):0;
+  var key='S'+id+'_'+q+(sel?'s':'')+(hi?'h':'')+(pulseOn?'p'+ph:'');
+  if(cache[key]) return cache[key];
+  var color=T[s.type]||T.pinink, r=(sel?8:6.5)*Math.max(sc,.05), arr=[];
+  if(sel||hi){
+    var pr=((sel?13:11)+(pulseOn?ph*1.05:0))*Math.max(Math.min(sc,1),.2), op=pulseOn?1-ph/17:.9;
+    arr.push(new ol.style.Style({image:new ol.style.Circle({radius:pr,stroke:new ol.style.Stroke({color:hexA(T.zobo,op),width:sel?3:2.5}),fill:new ol.style.Fill({color:hexA(T.zobo,.14*op)})}),zIndex:sel?28:18}));
+  }
+  arr.push(new ol.style.Style({
+    image:glyphImage(s.type,r,sel?T.zobo:color,T.pinink,2.5),
+    text:sc>=.55?new ol.style.Text({
+      text:s.short,font:"800 12px Syne,'Trebuchet MS',sans-serif",offsetY:-(r+13),scale:Math.max(Math.min(sc,1.12),.2),
+      fill:new ol.style.Fill({color:sel?'#ffffff':T.labelInk}),
+      backgroundFill:new ol.style.Fill({color:sel?T.zobo:color}),
+      backgroundStroke:new ol.style.Stroke({color:T.pinink,width:2}),
+      padding:[3,6,2,6]
+    }):undefined,
+    zIndex:sel?30:hi?20:10
+  }));
+  cache[key]=arr; return arr;
+}
+
+function fitWorld(animate){
+ if(!map) return;
+ view.animate({center:ol.proj.fromLonLat([12,16]),zoom:2.15,duration:animate?600:0});
+}
+function fitNigeria(animate){
+  if(!map) return;
+  var ext=ol.proj.transformExtent([2.5,4.0,14.9,14.0],'EPSG:4326','EPSG:3857');
+  view.fit(ext,{padding:[30,30,30,30],duration:animate?450:0});
+}
+function fitSchools(list,animate){
+  if(!map||!list.length) return;
+  if(list.length===SCHOOLS.length){ fitWorld(animate); return; }
+  var coords=list.map(function(s){return ol.proj.fromLonLat([s.lon,s.lat]);});
+  var ext=ol.extent.boundingExtent(coords);
+  view.fit(ext,{padding:[90,90,90,90],duration:animate?450:0,maxZoom:list.length===1?9:10});
+}
+
+function shiftGeom(g,dx,dy){
+  function sh(c){ return typeof c[0]==='number'?[c[0]+dx,c[1]+dy]:c.map(sh); }
+  return {type:g.type,coordinates:sh(g.coordinates)};
+}
+function nearAfrica(g){
+  var hit=false;
+  (function walk(c){
+    if(hit) return;
+    if(typeof c[0]==='number'){ if(c[0]>-32&&c[0]<62&&c[1]>-40&&c[1]<46) hit=true; return; }
+    for(var i=0;i<c.length&&!hit;i++) walk(c[i]);
+  })(g.coordinates);
+  return hit;
+}
+function loadWorld(src,read){
+  if(typeof topojson==='undefined'||!window.fetch) return;
+  fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-50m.json')
+    .then(function(r){ if(!r.ok) throw new Error('map data '+r.status); return r.json(); })
+    .then(function(topo){
+      var fc=topojson.feature(topo,topo.objects.countries), out=[], nga=null;
+      fc.features.forEach(function(f){
+        if(!f.geometry) return;
+        if(String(f.id)==='566'||(f.properties&&f.properties.name==='Nigeria')){ nga=f; return; }
+        if(nearAfrica(f.geometry)) out.push({type:'Feature',properties:{kind:'around'},geometry:f.geometry});
+      });
+      if(!nga) return;
+      out.push({type:'Feature',properties:{kind:'shade'},geometry:shiftGeom(nga.geometry,0.07,-0.1)});
+      out.push({type:'Feature',properties:{kind:'nga'},geometry:nga.geometry});
+      src.clear(); src.addFeatures(read(out)); cache={};
+    })
+    .catch(function(e){ if(window.console) console.warn('Using the simple built-in outline.',e); });
+}
+function tileSource(){
+  return new ol.source.XYZ({url:'https://tile.openstreetmap.org/{z}/{x}/{y}.png',maxZoom:19,crossOrigin:'anonymous'});
+}
+function updateTiles(){
+  if(!tileLayer||!view) return;
+  var o=mapMode==='atlas'?1:0;
+  tileLayer.setOpacity(o);
+  $('credit').textContent=mapMode==='satellite'?'Imagery © Esri, Maxar, Earthstar Geographics and contributors':'Map data © OpenStreetMap contributors';
+  $('credit').hidden=mapMode==='atlas'&&o<.05;
+}
+
+function initMap(){
+  if(typeof ol==='undefined'){
+    $('map').innerHTML='<div class="maperr">The map library did not load. The list, filters and advisor still work.</div>';
+    return;
+  }
+  readTheme();
+  var fmt=new ol.format.GeoJSON();
+  function read(fc){ return fmt.readFeatures({type:'FeatureCollection',features:fc},{dataProjection:'EPSG:4326',featureProjection:'EPSG:3857'}); }
+  var baseFeatures=read([
+    polyFeature(AROUND,{kind:'around'}),
+    polyFeature(NGA.map(function(c){return [c[0]+0.07,c[1]-0.1];}),{kind:'shade'}),
+    polyFeature(NGA,{kind:'nga'}),
+    polyFeature(LAKE,{kind:'lake'}),
+    lineFeature(NIGER,{kind:'river'}),
+    lineFeature(BENUE,{kind:'river'})
+  ]);
+  var labelFeatures=read(LABELS.map(function(l){return pointFeature([l[1],l[2]],{name:l[0],kind:l[3]});}));
+
+  var baseSource=new ol.source.Vector({features:baseFeatures});
+  satelliteLayer=new ol.layer.Tile({source:new ol.source.XYZ({url:'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',maxZoom:19,crossOrigin:'anonymous',attributions:'Tiles © Esri — Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community'}),className:'satellite-tiles'});
+  var layers=[satelliteLayer,
+    new ol.layer.Vector({source:baseSource,style:baseStyle,updateWhileInteracting:true}),
+  ];
+  layers.push(new ol.layer.Vector({source:new ol.source.Vector({features:labelFeatures}),style:labelStyle,declutter:false,updateWhileInteracting:true}));
+
+  atlasLayers=layers.slice(1);
+  atlasLayers.forEach(function(layer){layer.setVisible(false);});
+  tileLayer=new ol.layer.Tile({source:tileSource(),minZoom:0,opacity:1,className:'osm-tiles'});
+  layers.push(tileLayer);
+
+  var feats=SCHOOLS.map(function(s){
+    var f=new ol.Feature({geometry:new ol.geom.Point(ol.proj.fromLonLat([s.lon,s.lat]))});
+    f.setId(s.id); return f;
+  });
+  clusterSource=new ol.source.Cluster({
+    distance:70,minDistance:52,
+    source:new ol.source.Vector({features:feats}),
+    geometryFunction:function(f){ return matches(byId[f.getId()])?f.getGeometry():null; }
+  });
+  schoolLayer=new ol.layer.Vector({source:clusterSource,style:schoolStyle,updateWhileInteracting:true});
+  layers.push(schoolLayer);
+
+  view=new ol.View({
+    center:ol.proj.fromLonLat([12,16]),zoom:2.15,minZoom:1.5,maxZoom:19
+  });
+  map=new ol.Map({target:'map',layers:layers,view:view,controls:[]});
+  fitWorld(false);
+  function switchMode(mode){
+    mapMode=mode;
+    satelliteLayer.setVisible(mode==='satellite');
+    atlasLayers.forEach(function(layer){layer.setVisible(mode==='atlas');});
+    tileLayer.setVisible(mode==='atlas');
+    $('satMode').classList.toggle('active',mode==='satellite');
+    $('atlasMode').classList.toggle('active',mode==='atlas');
+    $('satMode').setAttribute('aria-pressed',String(mode==='satellite'));
+    $('atlasMode').setAttribute('aria-pressed',String(mode==='atlas'));
+    updateTiles();
+  }
+  $('satMode').addEventListener('click',function(){switchMode('satellite');});
+  $('atlasMode').addEventListener('click',function(){switchMode('atlas');});
+  switchMode('satellite');
+  (function intro(){
+    SCHOOLS.forEach(function(sc){ prevVis[sc.id]=1; });
+    if(RM) return;
+    var fc=view.getCenter(), fz=view.getZoom(), t0=Date.now()+950;
+    view.setRotation(0.42); view.setZoom(fz-1.5);
+    view.animate({zoom:fz,rotation:0,center:fc,duration:2000,easing:ol.easing.easeOut});
+    SCHOOLS.slice().sort(function(a,b){return a.lon-b.lon;}).forEach(function(sc,i){ appearAt[sc.id]=t0+i*34; });
+    animUntil=t0+SCHOOLS.length*34+520;
+  })();
+  map.on('postrender',function(){
+    if(!RM&&(Date.now()<animUntil||st.selected||st.highlight.size)) map.render();
+  });
+  map.render();
+
+  map.on('singleclick',function(e){
+    var hit=map.forEachFeatureAtPixel(e.pixel,function(f){return f;},{layerFilter:function(l){return l===schoolLayer;},hitTolerance:6});
+    if(!hit){ return; }
+    var members=hit.get('features');
+    if(members.length===1){ select(members[0].getId(),{fly:false}); }
+    else{
+      var ext=ol.extent.createEmpty();
+      members.forEach(function(m){ ol.extent.extend(ext,m.getGeometry().getExtent()); });
+      view.fit(ext,{padding:[90,90,90,90],duration:350,maxZoom:13});
+    }
+  });
+  map.on('pointermove',function(e){
+    if(e.dragging) return;
+    var hit=map.hasFeatureAtPixel(e.pixel,{layerFilter:function(l){return l===schoolLayer;},hitTolerance:6});
+    map.getTargetElement().style.cursor=hit?'pointer':'';
+  });
+  view.on('change:resolution',updateTiles);
+  loadWorld(baseSource,read);
+
+  $('zIn').onclick=function(){ view.animate({zoom:view.getZoom()+1,duration:200}); };
+  $('zOut').onclick=function(){ view.animate({zoom:view.getZoom()-1,duration:200}); };
+  $('zHome').onclick=function(){ fitWorld(true); };
+
+  function themeChanged(){ readTheme(); map.getLayers().forEach(function(l){l.changed();}); }
+  try{ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',themeChanged); }catch(e){}
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(themeChanged);
+  new MutationObserver(themeChanged).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+}
+function redrawMap(){
+  if(!map) return;
+  var vis={}, now=Date.now(), k=0;
+  visible().forEach(function(s){ vis[s.id]=1; if(!prevVis[s.id]){ appearAt[s.id]=now+k*22; k++; } });
+  if(k) animUntil=Math.max(animUntil,now+k*22+520);
+  prevVis=vis; cache={}; clusterSource.refresh(); schoolLayer.changed();
+}
+
+/* ---------- filters + list ---------- */
+function buildFilters(){
+  $('fTypes').innerHTML=Object.keys(TYPES).map(function(k){
+    return '<button type="button" class="chip t-'+k+'" data-type="'+k+'" aria-pressed="false"><span class="glyph"></span>'+TYPES[k]+'</button>';
+  }).join('');
+  $('fAreas').innerHTML=Object.keys(AREAS).map(function(k){
+    return '<button type="button" class="chip" data-area="'+k+'" aria-pressed="false">'+esc(AREAS[k])+'</button>';
+  }).join('');
+  $('fZone').innerHTML='<option value="">All world regions</option>'+Object.keys(ZONES).map(function(k){return '<option value="'+k+'">'+ZONES[k]+'</option>';}).join('');
+}
+function syncFilterUI(){
+  document.querySelectorAll('[data-type]').forEach(function(b){ b.setAttribute('aria-pressed',st.types.has(b.dataset.type)); });
+  document.querySelectorAll('[data-area]').forEach(function(b){ b.setAttribute('aria-pressed',st.areas.has(b.dataset.area)); });
+  $('fZone').value=st.zone; $('q').value=st.q;
+}
+var starSvg='<svg width="18" height="18" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4V3Z"/></svg>';
+var justSaved=null, countTok=0, shownCount=null;
+function rowHTML(s,i){
+  var on=shortlist.indexOf(s.id)>=0;
+  return '<li class="row-li t-'+s.type+'" style="--i:'+Math.min(i||0,14)+'"><button type="button" class="row'+(st.selected===s.id?' is-sel':'')+'" data-id="'+s.id+'">'
+    +'<span class="glyph r-glyph"></span>'
+    +'<span class="r-main"><span class="r-top"><span class="r-short">'+esc(s.short)+'</span><span class="r-type">'+TYPES[s.type]+'</span></span>'
+    +'<span class="r-name">'+esc(s.name)+'</span>'
+    +'<span class="r-loc">'+esc(s.city)+', '+esc(s.country)+'</span></span></button>'
+    +'<button type="button" class="star'+(justSaved===s.id?' just':'')+'" data-star="'+s.id+'" aria-pressed="'+on+'" aria-label="'+(on?'Remove '+esc(s.short)+' from shortlist':'Add '+esc(s.short)+' to shortlist')+'">'+starSvg+'</button></li>';
+}
+function setCount(n,total){
+  var el=$('count'), tok=++countTok;
+  function label(v){ return n===total?v+' schools':v+' of '+total+' schools'; }
+  if(shownCount===null||RM){ el.textContent=label(n); shownCount=n; return; }
+  var from=shownCount, t0=performance.now(); shownCount=n;
+  (function step(now){
+    if(tok!==countTok) return;
+    var p=Math.min(1,(now-t0)/420), v=Math.round(from+(n-from)*p);
+    el.textContent=label(v); if(p<1) requestAnimationFrame(step);
+  })(t0);
+}
+function renderList(animate){
+  var list=visible().sort(function(a,b){return a.name.localeCompare(b.name);});
+  setCount(list.length,SCHOOLS.length);
+  var ul=$('list'); ul.className='list'+(animate?' anim':'');
+  ul.innerHTML=list.length?list.map(rowHTML).join(''):'<li class="empty">No school matches these filters. Try removing one.</li>';
+  $('brandSub').textContent=SCHOOLS.length+' universities around the world. Explore the satellite map, filter, and save favourites.';
+}
+function anyFilter(){ return st.q||st.zone||st.types.size||st.areas.size; }
+function applyFilters(fit){
+  syncFilterUI(); renderList(true); redrawMap();
+  if(fit){ var v=visible(); if(v.length) fitSchools(v,true); }
+}
+function resetFilters(){ st.q='';st.zone='';st.types.clear();st.areas.clear(); applyFilters(true); }
+
+/* ---------- selection + detail card ---------- */
+function toggleShort(id){
+  var i=shortlist.indexOf(id);
+  if(i>=0){ shortlist.splice(i,1); justSaved=null; } else { shortlist.push(id); justSaved=id; }
+  store('cc-shortlist',shortlist);
+  renderAfterShort(); justSaved=null;
+}
+function renderAfterShort(){
+  $('slCount').textContent=shortlist.length;
+  renderList(); renderShortlist(); renderCard(); renderQuick();
+}
+function select(id,opts){
+  opts=opts||{};
+  st.selected=id;
+  if(map){
+    var s=byId[id], c=ol.proj.fromLonLat([s.lon,s.lat]), z0=view.getZoom(), z1=Math.max(z0,9);
+    if(opts.fly){
+      if(RM){ view.setCenter(c); view.setZoom(z1); }
+      else{
+        view.animate({center:c,duration:1000,easing:ol.easing.inAndOut});
+        view.animate({zoom:Math.min(z0,z1)-0.7,duration:380,easing:ol.easing.easeOut},{zoom:z1,duration:620,easing:ol.easing.easeIn});
+      }
+    }
+    cache={}; schoolLayer.changed();
+  }
+  renderCard(true); renderList(); renderQuick();
+}
+function renderCard(animate){
+  var c=$('card');
+  var s=st.selected&&byId[st.selected];
+  if(!s){ c.hidden=true; return; }
+  var on=shortlist.indexOf(s.id)>=0;
+  c.hidden=false;
+  c.className='card t-'+s.type;
+  if(animate&&!RM){ void c.offsetWidth; c.className='card enter t-'+s.type; }
+  c.innerHTML='<div class="card-hero"><span class="card-short">'+esc(s.short)+'</span><button class="card-x" type="button" id="cardX" aria-label="Close details">\u00D7</button></div>'
+    +'<div class="card-body"><div><h2>'+esc(s.name)+'</h2><p class="card-sub">'+TYPES[s.type]+' university in '+esc(s.city)+', '+esc(s.country)+'</p></div>'
+    +'<dl class="facts"><dt>Region</dt><dd>'+ZONES[s.zone]+'</dd><dt>Founded</dt><dd>'+s.year+'</dd>'
+    +'<dt>Cost band</dt><dd><span class="naira">'+naira(COST[s.type])+'</span><span class="naira dim">'+naira(3-COST[s.type])+'</span></dd></dl>'
+    +'<div><span class="flabel">Programmes offered</span><div class="tags">'+s.areas.map(function(a){return '<span class="tag'+(st.areas.has(a)?' on':'')+'">'+esc(AREAS[a])+'</span>';}).join('')+'</div></div>'
+    +'<div class="actions"><button type="button" class="btn btn-primary" id="cShort">'+(on?'Remove from shortlist':'Add to shortlist')+'</button>'
+    +'<button type="button" class="btn" id="cAsk">Ask the advisor</button>'
+    +'<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/search?q='+encodeURIComponent(s.name+' admission requirements')+'">Admission info</a></div>'
+    +'<p class="fine">Ownership is not a reliable indicator of international tuition. Confirm fees, programmes and admissions requirements on each university’s official website; JAMB applies to Nigerian institutions.</p></div>';
+  $('cardX').onclick=function(){ st.selected=null; if(map){ cache={}; schoolLayer.changed(); } renderCard(); renderList(); renderQuick(); };
+  $('cShort').onclick=function(){ toggleShort(s.id); };
+  $('cAsk').onclick=function(){ go('advisor'); ask('Tell me about '+s.name+' and whether it fits my profile.'); };
+}
+
+/* ---------- shortlist ---------- */
+function renderShortlist(){
+  var b=$('slBody');
+  if(!shortlist.length){
+    b.innerHTML='<p class="empty">No schools saved yet. Tap the bookmark on any school to keep it here.</p>';
+    return;
+  }
+  var items=shortlist.map(function(id){return byId[id];});
+  b.innerHTML='<div class="sl-actions"><button type="button" class="btn btn-primary" id="slCompare"'+(items.length<2?' disabled':'')+'>Compare with the advisor</button><button type="button" class="btn" id="slMap">Show on map</button></div>'
+    +'<ul class="list anim">'+items.map(rowHTML).join('')+'</ul>';
+  $('slCompare').onclick=function(){ go('advisor'); ask('Compare the schools on my shortlist for my profile and tell me which to apply to first.'); };
+  $('slMap').onclick=function(){ st.highlight=new Set(shortlist); if(map){schoolLayer.changed(); fitSchools(items,true);} if(narrow.matches) go('map'); };
+}
+
+/* ---------- navigation ---------- */
+function go(v){
+  if(v==='map'){ st.screen='map'; }
+  else { st.screen='panel'; st.tab=v; }
+  paintNav();
+  if(map) requestAnimationFrame(function(){ map.updateSize(); });
+}
+function placeInd(){
+  var ind=$('tabInd'), cur=document.querySelector('.tab[aria-selected="true"]');
+  if(!ind||!cur||!cur.offsetWidth) return;
+  ind.style.width=cur.offsetWidth+'px';
+  ind.style.transform='translateX('+cur.offsetLeft+'px)';
+}
+function paintNav(){
+  $('app').dataset.screen=st.screen;
+  $('app').dataset.activeTab=st.tab;
+  ['explore','advisor','shortlist'].forEach(function(t){ $('pane-'+t).classList.toggle('on',st.tab===t); });
+  document.querySelectorAll('.tab').forEach(function(b){
+    var g=b.dataset.go, sel;
+    if(narrow.matches) sel=(g==='map')?st.screen==='map':(st.screen==='panel'&&st.tab===g);
+    else sel=(g===st.tab);
+    b.setAttribute('aria-selected',sel);
+  });
+  placeInd();
+}
+window.addEventListener('resize',placeInd);
+if(document.fonts&&document.fonts.ready) document.fonts.ready.then(placeInd);
+
+/* ---------- advisor ---------- */
+var aiState='loading', mode='local', thread=[], busy=false, controller=null;
+var INSTR=[
+ 'You are the advisor inside Campus Compass, a global university discovery map. Help students explore universities worldwide, while distinguishing Nigerian JAMB requirements from other countries admissions processes.',
+ 'For facts about specific schools use only the dataset below. International applications vary by institution and country. You also know general Nigerian admission practice (JAMB UTME, post-UTME screening, O’level requirements, direct entry, catchment and merit quotas).',
+ 'You do not have current cut-off marks, tuition amounts or rankings. Never state them; tell the student to confirm on the school’s admission portal and the current JAMB brochure.',
+ 'Be a warm, conversational student guide. Discuss campus social life, clubs, friendships, accommodation, safety, study workload, teaching, libraries, exams, support and work-life balance. Ask one useful follow-up question. Distinguish general expectations from verified school-specific facts: the dataset does not contain campus-life reviews, facilities or student satisfaction; never invent them. Keep answers under 230 words, with helpful concrete suggestions.',
+ 'When you recommend or compare specific schools, end with one final line in exactly this form, using ids from the dataset, at most 6: PICKS: id1,id2,id3. Otherwise leave that line out.',
+ 'If the question is not about choosing a school, courses or applying, say so in one sentence and steer back.'
+].join('\n');
+function datasetText(){
+  return SCHOOLS.map(function(s){
+    return s.id+' | '+s.name+' ('+s.short+') | '+s.city+', '+s.country+' | '+ZONES[s.zone]+' | '+TYPES[s.type]+' | founded '+s.year+' | '+s.areas.map(function(a){return AREAS[a];}).join(', ');
+  }).join('\n');
+}
+function profile(){
+  return {course:$('pCourse').value.trim(),jamb:$('pJamb').value.trim(),budget:$('pBudget').value};
+}
+function dynamicContext(){
+  var p=profile(), parts=[];
+  var pr=[];
+  if(p.course) pr.push('wants to study '+p.course);
+  if(p.jamb) pr.push('JAMB UTME score '+p.jamb+'/400');
+  if(p.budget==='public') pr.push('wants public schools only');
+  if(p.budget==='any') pr.push('private schools are fine');
+  parts.push('STUDENT PROFILE: '+(pr.length?pr.join('; '):'not provided'));
+  parts.push('SHORTLIST: '+(shortlist.length?shortlist.join(', '):'empty'));
+  parts.push('SELECTED ON MAP: '+(st.selected?st.selected:'none'));
+  var f=[];
+  if(st.types.size) f.push('ownership '+Array.from(st.types).map(function(t){return TYPES[t];}).join('/'));
+  if(st.areas.size) f.push('programmes '+Array.from(st.areas).map(function(a){return AREAS[a];}).join(' + '));
+  if(st.zone) f.push('region '+ZONES[st.zone]);
+  if(st.q) f.push('search "'+st.q+'"');
+  parts.push('FILTERS ON SCREEN: '+(f.length?f.join('; '):'none'));
+  return '[Current state of the app]\n'+parts.join('\n');
+}
+function toInput(){
+  var msgs=thread.filter(function(m){return !m.pending&&!m.error&&m.text;}).slice(-10).map(function(m){return {role:m.role,content:m.text};});
+  while(msgs.length&&msgs[0].role!=='user') msgs.shift();
+  if(!msgs.length) return null;
+  msgs[0].content=INSTR+'\n\nDATASET (id | name (short) | location | region | ownership | founded | programme areas):\n'+datasetText()+'\n\nSTUDENT QUESTION:\n'+msgs[0].content;
+  msgs[msgs.length-1].content+='\n\n'+dynamicContext();
+  return msgs;
+}
+function parsePicks(text){
+  var m=text.match(/^\s*PICKS:\s*(.+)$/mi), picks=[];
+  if(m) picks=m[1].split(/[,\s]+/).map(function(x){return x.trim().toLowerCase();}).filter(function(x){return byId[x];}).filter(function(x,i,a){return a.indexOf(x)===i;}).slice(0,6);
+  var clean=text.replace(/\n?\s*PICKS:[\s\S]*$/i,'').trim();
+  return {text:clean,picks:picks};
+}
+function renderThread(){
+  var t=$('thread');
+  if(!thread.length){
+    t.innerHTML='<div class="msg ai"><div class="who">Advisor</div><div class="body"><p>Hey! 👋 I am your Campus Compass guide. Ask me about student life, classes, clubs, friendships, admissions, or choosing a university. Want to explore the social side or academic side first?</p></div></div>';
+    return;
+  }
+  t.innerHTML=thread.map(function(m){
+    if(m.role==='user') return '<div class="msg me"><p>'+esc(m.text)+'</p></div>';
+    var inner;
+    if(m.error) inner='<p class="err">'+esc(m.error)+'</p>';
+    else if(m.pending&&!m.text) inner='<p class="dots" aria-label="Thinking"><span></span><span></span><span></span></p>';
+    else inner=md(parsePicks(m.text).text);
+    var picks=(!m.pending&&m.picks&&m.picks.length)?'<div class="picks">'+m.picks.map(function(id){return '<button type="button" class="pick" data-pick="'+id+'">'+esc(byId[id].short)+'</button>';}).join('')+'<button type="button" class="pick pick-all" data-pickall="'+m.picks.join(',')+'">Show all on map</button></div>':'';
+    return '<div class="msg ai"><div class="who">Advisor</div><div class="body">'+inner+'</div>'+picks+'</div>';
+  }).join('');
+  // Keep the newest response in view. For long answers, anchor its beginning
+  // rather than forcing the reader to scroll back up from the bottom.
+  requestAnimationFrame(function(){
+    var replies=t.querySelectorAll('.msg.ai');
+    var last=replies[replies.length-1];
+    if(!last) return;
+    var top=last.offsetTop-t.offsetTop;
+    var available=t.clientHeight;
+    if(last.offsetHeight>available-20){t.scrollTop=Math.max(0,top-6);}
+    else {t.scrollTop=t.scrollHeight;}
+  });
+}
+function renderQuick(){
+  var q=$('quick'), items=[['Match me to schools','Using my profile and the filters on screen, suggest up to 5 schools and say why each fits.']];
+  if(shortlist.length>1) items.push(['Compare my shortlist','Compare the schools on my shortlist for my profile and tell me which to apply to first.']);
+  if(st.selected) items.push(['About '+byId[st.selected].short,'Tell me about '+byId[st.selected].name+' and whether it fits my profile.']);
+  items.push(['Campus life 🎓','What are the social and academic sides of university life like?']);
+  items.push(['Social life 🎉','What is social life like at university? Tell me about clubs, friends and events.']);
+  items.push(['Academic life 📚','What is academic life like at university, including classes, studying and exams?']);
+  items.push(['How do I apply?','Walk me through the steps to apply to a Nigerian university, in order.']);
+  q.innerHTML=items.map(function(it,i){return '<button type="button" class="chip" data-q="'+i+'"'+(aiState==='ready'&&!busy?'':' disabled')+'>'+esc(it[0])+'</button>';}).join('');
+  q._items=items;
+}
+function renderAIState(){
+  var note=$('aiNote'), on=aiState==='ready';
+  note.hidden=aiState==='ready'&&mode!=='local';
+  if(aiState==='ready'&&mode==='local') note.textContent='Interactive guide (offline): ask about social life, academic life and universities. School-specific experiences are general guidance, not verified student reviews.';
+  if(aiState==='loading') note.textContent='Connecting the advisor…';
+  if(aiState==='off') note.textContent='The advisor is offline. Start the server with your Meta API key to turn it on. The map, filters and shortlist still work.';
+  if(aiState==='denied') note.textContent='Advisor permission was declined for this visit. Reload the page to be asked again.';
+  $('ask').disabled=!on; $('send').disabled=!on&&!busy;
+  $('send').textContent=busy?'Stop':'Send';
+  renderQuick();
+}
+function setBusy(b){ busy=b; renderAIState(); }
+function ask(question){
+  question=(question||'').trim();
+  if(!question||busy) return;
+  if(aiState!=='ready'){ renderAIState(); return; }
+  thread.push({role:'user',text:question});
+  var msg={role:'assistant',text:'',pending:true,picks:[]};
+  thread.push(msg);
+  renderThread(); setBusy(true);
+  if($('pCourse').value.trim()) $('profileBox').open=false;
+  if(mode==='local'){
+    setTimeout(function(){
+      var p=parsePicks(localAdvice(question)), parts=p.text.split(/(\s+)/), i=0;
+      function done(){
+        msg.text=p.text; msg.picks=p.picks; msg.pending=false;
+        if(p.picks.length){ st.highlight=new Set(p.picks); if(map){ cache={}; schoolLayer.changed(); } }
+        setBusy(false); renderThread();
+      }
+      if(RM){ done(); return; }
+      (function tick(){ i+=3; msg.text=parts.slice(0,i).join(''); renderThread(); if(i<parts.length) setTimeout(tick,26); else done(); })();
+    },380);
+    return;
+  }
+  var input=toInput();
+  controller=new AbortController();
+  fetch('/api/advise',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:input}),signal:controller.signal})
+  .then(function(r){
+    if(r.status===429){ var e=new Error('rate'); e.code='rate_limited'; throw e; }
+    if(!r.ok){ throw new Error('http '+r.status); }
+    return r.json();
+  })
+  .then(function(res){
+    var p=parsePicks(res.text||msg.text||'');
+    msg.text=p.text||'I could not put together an answer. Try rephrasing.'; msg.picks=p.picks; msg.pending=false;
+    if(p.picks.length){ st.highlight=new Set(p.picks); if(map) schoolLayer.changed(); }
+  })
+  .catch(function(err){
+    msg.pending=false;
+    var code=err&&err.code;
+    if(code==='aborted'||(err&&err.name==='AbortError')){ if(msg.text){ var p=parsePicks(msg.text); msg.text=p.text; } else { thread.splice(thread.indexOf(msg),1); } return; }
+    if(code==='not_granted'){ aiState='denied'; msg.error='Permission was declined, so the advisor cannot answer.'; }
+    else if(code==='rate_limited'){ msg.error='Too many questions in a short time. Wait a moment and try again.'; }
+    else { msg.error='The advisor could not answer. Try again.'; }
+    msg.text='';
+  })
+  .then(function(){ controller=null; setBusy(false); renderThread(); });
+}
+function initAI(){
+  fetch('/api/health').then(function(r){return r.ok?r.json():null;}).catch(function(){return null;})
+  .then(function(j){ mode=(j&&j.ok)?'meta':'local'; aiState='ready'; renderAIState(); });
+}
+
+
+/* ---------- offline advisor (no AI service) ---------- */
+var COURSE_WORDS=[
+  ['eng',/engineer|mechatronic|aerospace|petroleum|mechanical|electrical|electronic|civil|chemical eng|mechatronics|architecture|surveying|computer eng/],
+  ['med',/medicine|medical|mbbs|nursing|pharmac|dentist|physiotherap|radiograph|optometry|public health|anatomy|physiology|laboratory science|health/],
+  ['law',/\blaw\b|llb|jurisprud/],
+  ['bus',/account|business|finance|banking|marketing|management|insurance|entrepreneur|actuarial|human resource/],
+  ['agr',/agric|agronomy|animal science|crop|fisheries|forestry|food science|soil/],
+  ['sci',/physics|chemistry|biology|mathematic|statistic|microbio|biochem|computer science|software|cyber|geology|data science|information technology|zoology|botany|industrial chem|science/],
+  ['art',/english|history|mass comm|political|sociolog|psycholog|economics|theatre|language|philosoph|religio|linguistic|education|music|fine art|geography|social|arts\b|communication|international relations|public admin/]
+];
+function detectAreas(text){
+  var t=(text||'').toLowerCase(), out=[];
+  COURSE_WORDS.forEach(function(c){ if(c[1].test(t)&&out.indexOf(c[0])<0) out.push(c[0]); });
+  // "computer engineering" is engineering, not just science
+  if(/computer eng/.test(t)) out=out.filter(function(a){return a!=='sci'||/computer science|software|data science/.test(t);});
+  return out;
+}
+function detectPlace(q){
+  var t=(q||'').toLowerCase(), states={}, zones={};
+  SCHOOLS.forEach(function(s){ if(t.indexOf(s.state.toLowerCase())>=0) states[s.state]=1; });
+  Object.keys(ZONES).forEach(function(z){ if(t.indexOf(ZONES[z].toLowerCase())>=0) zones[z]=1; });
+  if(/\bnorth\b/.test(t)&&!/north-/.test(t)){ zones.NW=1; zones.NE=1; zones.NC=1; }
+  if(/\bwest\b/.test(t)&&!/-west/.test(t)) zones.SW=1;
+  if(/\beast\b/.test(t)&&!/-east/.test(t)){ zones.SE=1; }
+  return {states:Object.keys(states),zones:Object.keys(zones)};
+}
+function scoreTier(){
+  var n=parseInt(profile().jamb,10);
+  if(isNaN(n)||n<=0||n>400) return null;
+  return n>=260?'high':n>=200?'mid':'low';
+}
+function whyLine(s,areas,tier){
+  var bits=[TYPES[s.type]+' school in '+s.city+', '+s.state];
+  if(areas.length){ bits.push('offers '+areas.map(function(a){return AREAS[a];}).join(' and ')); }
+  bits.push(COST[s.type]===1?'usually the lowest cost band':COST[s.type]===2?'mid cost band':'highest cost band');
+  return bits.join(', ');
+}
+function rank(areas,place,tier,budget){
+  var pool=SCHOOLS.filter(function(s){
+    if(st.types.size&&!st.types.has(s.type)) return false;
+    if(budget==='public'&&s.type==='priv') return false;
+    if(areas.length){ var ok=areas.every(function(a){return s.areas.indexOf(a)>=0;}); if(!ok) return false; }
+    return true;
+  });
+  var zones=place.zones.length?place.zones:(st.zone?[st.zone]:[]);
+  var states=place.states;
+  pool=pool.map(function(s){
+    var p=0;
+    if(states.length) p+=states.indexOf(s.state)>=0?4:0;
+    if(zones.length) p+=zones.indexOf(s.zone)>=0?2:0;
+    if(tier==='high'){ if(s.type==='fed') p+=1.5; }
+    else if(tier==='mid'){ if(s.type==='fed') p+=.5; if(s.type==='state') p+=.5; }
+    else if(tier==='low'){ if(s.type==='state') p+=1; if(s.type==='priv') p+=1.5; }
+    if(shortlist.indexOf(s.id)>=0) p+=.5;
+    p+=s.areas.length*.1+(2026-s.year)*.002;
+    return {s:s,p:p};
+  }).sort(function(a,b){return b.p-a.p;});
+  // when the student named a place, keep only schools there if any exist
+  if(states.length||zones.length){
+    var near=pool.filter(function(x){return states.indexOf(x.s.state)>=0||zones.indexOf(x.s.zone)>=0;});
+    if(near.length) pool=near;
+  }
+  return pool.slice(0,5).map(function(x){return x.s;});
+}
+function findSchool(q){
+  var t=q.toLowerCase();
+  for(var i=0;i<SCHOOLS.length;i++){
+    var s=SCHOOLS[i];
+    if(t.indexOf(s.name.toLowerCase())>=0) return s;
+  }
+  for(var j=0;j<SCHOOLS.length;j++){
+    var c=SCHOOLS[j], re=new RegExp('\\b'+c.short.toLowerCase().replace(/[^a-z0-9]/g,'.')+'\\b');
+    if(re.test(t)||t.indexOf(c.id)>=0&&c.id.length>3) return c;
+  }
+  return null;
+}
+function campusLifeAdvice(q){
+  var t=q.toLowerCase();
+  var previous=thread.filter(function(m){return m.role==='user';}).slice(-3,-1).map(function(m){return m.text.toLowerCase();}).join(' ');
+  var school=findSchool(q);
+  if(!school && /^(what about|and|how about|tell me more|is it|does it|what's it like)/.test(t)){
+    var recent=thread.filter(function(m){return m.role==='user';}).slice(0,-1);
+    for(var j=recent.length-1;j>=0;j--){school=findSchool(recent[j].text);if(school)break;}
+  }
+  if(!school&&st.selected&&byId[st.selected]) school=byId[st.selected];
+  var social=/social|party|parties|friends|friendship|club|societ|fun|event|nightlife|campus life|student life|community|extracurricular|sports|vibe|boring|lonely|accommodat|hostel|dorm|balance|stress|safe|safety/.test(t);
+  var academic=/academic|academics|studying|study|studies|lecture|class|coursework|exam|assignment|professor|teacher|research|library|workload|grades|learning|teaching|education|balance|stress/.test(t);
+  if(!social&&!academic && /^(yes|sure|both|everything|tell me more|go on|continue)$/.test(t) && /social|academic|campus|student life/.test(previous)){social=true;academic=true;}
+  if(!social&&!academic)return null;
+  var heading=school?'**'+school.name+' — campus life**':'**What university life can feel like**';
+  var context=school?'It is in '+school.city+', '+school.country+'. ':'Different campuses have very different cultures. ';
+  var note='I have location and programme data, but no verified student reviews or campus-facility details, so this is a realistic guide rather than a claim about a specific school.';
+  var parts=[heading,context+note];
+  if(social){
+    parts.push('**🎉 Social life**\n- Friends often come through classmates, clubs, sports, volunteering and shared accommodation.\n- Events and societies can make campus exciting, but the pace varies a lot between universities.\n- You can have a great experience without partying: try one or two groups you genuinely enjoy.');
+  }
+  if(academic){
+    parts.push('**📚 Academic life**\n- Expect more independent reading, assignments, projects and exam preparation than in secondary school.\n- Lectures, labs and group projects depend on your course. Study groups and office hours can help.\n- A weekly study routine leaves more time for rest, friends and activities.');
+  }
+  if(/hostel|dorm|accommodat|living/.test(t))parts.push('**🏠 Living on campus**\nCheck housing availability, travel time, internet reliability, meals and security directly with the university or current students.');
+  if(/safe|safety/.test(t))parts.push('**🛡️ Safety**\nAsk about campus security, transport after dark, emergency contacts and student support services.');
+  if(school)parts.push('**How to check '+school.short+' specifically:** Look for its official student-affairs and clubs pages, recent campus tours, and students from your intended department. Ask what a normal week looks like.');
+  parts.push(social&&!academic?'Would you like to hear about **academics**, **accommodation**, or **how to make friends**?':academic&&!social?'Should we explore **social life**, **study tips**, or the workload for your **course**?':'Which matters more to you: **a lively social scene** or **a calm place to focus on studying**?');
+  if(school)parts.push('PICKS: '+school.id);
+  return parts.join('\n\n');
+}
+function localAdvice(q){
+  var t=q.toLowerCase(), p=profile(), tier=scoreTier();
+  var life=campusLifeAdvice(q); if(life)return life;
+  var areas=detectAreas(t); if(!areas.length) areas=detectAreas(p.course);
+  if(!areas.length&&st.areas.size) areas=Array.from(st.areas);
+  var place=detectPlace(q);
+
+  if(/compare/.test(t)){
+    var sl=shortlist.map(function(id){return byId[id];});
+    if(sl.length<2) return 'Add at least two schools to your shortlist first, then ask me to compare them.';
+    var lines=sl.map(function(s){
+      var fit=areas.length?(areas.every(function(a){return s.areas.indexOf(a)>=0;})?'offers your course area':'does not list your course area'):'course area not set';
+      return '- **'+s.short+'**: '+TYPES[s.type]+', '+s.city+', '+s.state+'; '+fit+'; '+(COST[s.type]===1?'lowest':COST[s.type]===2?'mid':'highest')+' cost band; founded '+s.year+'.';
+    }).join('\n');
+    var best=sl.slice().sort(function(a,b){
+      function sc(s){ var v=0; if(areas.length&&areas.every(function(x){return s.areas.indexOf(x)>=0;})) v+=5; v+=(4-COST[s.type])*.4; v+=(2026-s.year)*.005; return v; }
+      return sc(b)-sc(a);
+    })[0];
+    return 'Here is how your shortlist compares:\n'+lines+'\n\nOn course fit and cost, **'+best.short+'** looks strongest. Check each school\u2019s cut-off for your course before you decide.\n\nPICKS: '+sl.map(function(s){return s.id;}).join(',');
+  }
+
+  var one=findSchool(q);
+  if(one&&!/apply|steps/.test(t)){
+    var fitLine=areas.length?(areas.every(function(a){return one.areas.indexOf(a)>=0;})?'It offers your course area ('+areas.map(function(a){return AREAS[a];}).join(', ')+').':'It does not list your course area, so check its faculties.'):'Set your course in Your profile to see how well it fits.';
+    var tierLine=tier==='high'?'Your score is strong, so this is a reasonable first choice if the course cut-off allows.':tier==='mid'?'With a mid-range score, pair it with a safer option.':tier==='low'?'With a lower score, also apply to schools with lower demand.':'Add your JAMB score in Your profile for a score note.';
+    return '**'+one.name+'** ('+one.short+')\n- '+TYPES[one.type]+' university in '+one.city+', '+one.state+' ('+ZONES[one.zone]+')\n- Founded '+one.year+'\n- Programme areas: '+one.areas.map(function(a){return AREAS[a];}).join(', ')+'\n- Cost band: '+naira(COST[one.type])+' of '+naira(3)+'\n\n'+fitLine+' '+tierLine+'\n\nPICKS: '+one.id;
+  }
+
+  if(/\bapply|application|admission|steps|post-?utme|how do i\b|register/.test(t)){
+    return 'Steps to apply to a Nigerian university:\n1. Register for the UTME with JAMB and choose the course and schools you want.\n2. Sit the UTME and check your score.\n3. Watch for your school\u2019s post-UTME or screening notice and register for it.\n4. Check the school\u2019s admission list and accept your offer on the JAMB portal.\n5. Pay the acceptance fee and complete your school registration.\n\nCut-offs and dates change every year, so confirm them on the school\u2019s admission page and with JAMB.';
+  }
+
+  if(/cost|cheap|fee|afford|price|expens|tuition/.test(t)){
+    var cheap=SCHOOLS.filter(function(s){return s.type==='fed'&&(!areas.length||areas.every(function(a){return s.areas.indexOf(a)>=0;}));}).slice(0,5);
+    return 'I do not have fee amounts, so check each school\u2019s fee schedule. As a rule:\n- Federal schools usually cost the least.\n- State schools sit in the middle, and are often cheaper for indigenes.\n- Private schools usually cost the most.\n\nFederal schools'+(areas.length?' offering '+areas.map(function(a){return AREAS[a];}).join(' and '):'')+' to look at first:\n'+(cheap.length?cheap.map(function(s){return '- **'+s.short+'**, '+s.city+', '+s.state;}).join('\n'):'- None match yet. Try a different course.')+(cheap.length?'\n\nPICKS: '+cheap.map(function(s){return s.id;}).join(','):'');
+  }
+
+  if(!areas.length){
+    $('profileBox').open=true;
+    return 'Tell me the course you want so I can match schools to it. Type it in Your profile (for example, Computer Engineering), or ask something like \u201cbest schools for medicine in the south-west\u201d.';
+  }
+  var picks=rank(areas,place,tier,p.budget);
+  var area=areas.map(function(a){return AREAS[a];}).join(' and ');
+  if(!picks.length) return 'No school on the map matches '+area+' with your current filters. Try clearing the ownership filter or choosing a different course.';
+  var out='Schools offering '+area+' that fit what you told me:\n'+picks.map(function(s,i){return (i+1)+'. **'+s.short+'**: '+whyLine(s,areas,tier)+'.';}).join('\n');
+  if(tier==='high') out+='\n\nYour score is strong. Federal schools are worth putting first, but check each cut-off for your course.';
+  else if(tier==='mid') out+='\n\nWith a mid-range score, apply to a mix of one reach school and one or two safer ones.';
+  else if(tier==='low') out+='\n\nWith a lower score, put state and private schools beside your federal choice so you have safer options.';
+  else out+='\n\nAdd your JAMB score in Your profile and I will tune the order.';
+  if(/medicine|law|pharmac|dentist/.test(t+' '+(p.course||'').toLowerCase())) out+='\nMedicine, Law and Pharmacy are among the most competitive courses, so expect higher cut-offs.';
+  out+='\n\nPICKS: '+picks.map(function(s){return s.id;}).join(',');
+  return out;
+}
+
+/* ---------- events ---------- */
+function bind(){
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.go); }); });
+  var qt=null;
+  $('q').addEventListener('input',function(e){ clearTimeout(qt); var v=e.target.value.trim().toLowerCase(); qt=setTimeout(function(){ st.q=v; syncCountOnly(); },160); });
+  function syncCountOnly(){ renderList(true); redrawMap(); var v=visible(); if(st.q&&v.length) fitSchools(v,true); }
+  $('fTypes').addEventListener('click',function(e){ var b=e.target.closest('[data-type]'); if(!b) return; var k=b.dataset.type; if(st.types.has(k)) st.types.delete(k); else st.types.add(k); applyFilters(true); });
+  $('fAreas').addEventListener('click',function(e){ var b=e.target.closest('[data-area]'); if(!b) return; var k=b.dataset.area; if(st.areas.has(k)) st.areas.delete(k); else st.areas.add(k); applyFilters(true); renderCard(); });
+  $('fZone').addEventListener('change',function(e){ st.zone=e.target.value; applyFilters(true); });
+  $('reset').addEventListener('click',resetFilters);
+  function listClick(e){
+    var star=e.target.closest('[data-star]');
+    if(star){ toggleShort(star.dataset.star); return; }
+    var row=e.target.closest('[data-id]');
+    if(row){ select(row.dataset.id,{fly:true}); if(narrow.matches) go('map'); }
+  }
+  $('list').addEventListener('click',listClick);
+  $('slBody').addEventListener('click',listClick);
+  $('thread').addEventListener('click',function(e){
+    var one=e.target.closest('[data-pick]'), all=e.target.closest('[data-pickall]');
+    if(one){ select(one.dataset.pick,{fly:true}); if(narrow.matches) go('map'); }
+    if(all){
+      var ids=all.dataset.pickall.split(','); st.highlight=new Set(ids);
+      if(map){ schoolLayer.changed(); fitSchools(ids.map(function(i){return byId[i];}),true); }
+      if(narrow.matches) go('map');
+    }
+  });
+  $('quick').addEventListener('click',function(e){ var b=e.target.closest('[data-q]'); if(!b) return; var it=$('quick')._items[+b.dataset.q]; ask(it[1]); });
+  $('composer').addEventListener('submit',function(e){
+    e.preventDefault();
+    if(busy){ if(controller) controller.abort(); return; }
+    var v=$('ask').value; $('ask').value=''; ask(v);
+  });
+  $('ask').addEventListener('keydown',function(e){ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); $('composer').requestSubmit(); } });
+  ['pCourse','pJamb','pBudget'].forEach(function(id){ $(id).addEventListener('change',function(){ store('cc-profile',profile()); }); });
+  var onMq=function(){ paintNav(); if(map) requestAnimationFrame(function(){map.updateSize();}); };
+  if(narrow.addEventListener) narrow.addEventListener('change',onMq); else narrow.addListener(onMq);
+}
+
+/* ---------- theme ---------- */
+var THEMES=['auto','light','dark'];
+var theme=store('cc-theme')||'auto'; if(THEMES.indexOf(theme)<0) theme='auto';
+function applyTheme(){
+  if(theme==='auto') document.documentElement.removeAttribute('data-theme'); else document.documentElement.setAttribute('data-theme',theme);
+  $('themeBtn').textContent='Theme: '+theme.charAt(0).toUpperCase()+theme.slice(1);
+}
+$('themeBtn').addEventListener('click',function(){ theme=THEMES[(THEMES.indexOf(theme)+1)%THEMES.length]; store('cc-theme',theme); applyTheme(); });
+applyTheme();
+
+/* ---------- boot ---------- */
+buildFilters();
+var saved=store('cc-profile');
+if(saved){ $('pCourse').value=saved.course||''; $('pJamb').value=saved.jamb||''; $('pBudget').value=saved.budget||''; }
+if(!saved||!saved.course) $('profileBox').open=true;
+bind();
+syncFilterUI(); renderList(true); renderShortlist(); renderThread(); renderAIState(); paintNav();
+$('slCount').textContent=shortlist.length;
+initMap();
+initAI();
+})();
+</script>
+</body></html>
